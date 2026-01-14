@@ -1,13 +1,57 @@
-import { PagesArray, StagesArray } from "../../types"
+import { PagesArray, StagesArray, StagesWithPagesArray } from "../../types"
 import { validatePagesArray, validateStagesArray } from "../../validate"
 
+// Get and validate stages from the provided input
 export const getStages = (stages: StagesArray) => {
   const validatedStages = validateStagesArray(stages)
   return validatedStages
 }
 
-export const getStagesWithPages = (stages: StagesArray, pages: PagesArray) => {
+// Get and validate stages and relevant pages from the provided input. Return an array of Stage objects containing relevant pages.
+export const getStagesWithPages = (stages: StagesArray, pages: PagesArray): StagesWithPagesArray => {
   const validatedStages = validateStagesArray(stages)
   const validatedPages = validatePagesArray(pages)
-  return { stages: validatedStages, pages: validatedPages }
+  return mapPagesToStages(validatedStages, validatedPages)
+}
+
+// Below this point is just the helper function used internally for the above functions
+
+// This function does the heavy lifting of mapping pages to their relevant stages
+export const mapPagesToStages = (
+  stages: StagesArray,
+  pages: PagesArray
+): StagesWithPagesArray => {
+  const stagesWithPages: StagesWithPagesArray = stages.map((stage) => {
+    // Filter pages that belong to this stage
+    const pagesForStage = pages.filter(
+      (page) => page.stageId === stage.id
+    )
+
+    // Map sub-stages with their relevant pages
+    let subStagesWithPages
+    if (stage.subStages) {
+      subStagesWithPages = stage.subStages.map((subStage) => {
+        // Filter pages that belong to this sub-stage
+        const pagesForSubStage = pagesForStage.filter(
+          (page) => page.subStageId === String(subStage.id)
+        )
+        return {
+          id: subStage.id,
+          title: subStage.title,
+          description: subStage.description,
+          pages: pagesForSubStage
+        }
+      })
+    }
+
+    return {
+      id: stage.id,
+      title: stage.title,
+      description: stage.description,
+      subStages: subStagesWithPages,
+      pages: pagesForStage
+    }
+  })
+
+  return stagesWithPages
 }

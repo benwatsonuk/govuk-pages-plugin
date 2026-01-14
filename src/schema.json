@@ -33,6 +33,8 @@
               "title": { "type": "string" },
               "route": { "type": "string" },
               "type": { "type": ["string", "null"] },
+              "stage": { "type": ["string", "null"] },
+              "subStage": { "type": ["string", "null"] },
               "description": { "type": ["string", "null"] }
             },
             "additionalProperties": true
