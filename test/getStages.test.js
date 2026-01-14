@@ -1,0 +1,20 @@
+const expect = require('chai').expect
+
+const getStages = require('../src/functions/stages/getStages.ts')
+const {validStages, invalidStages} = require('./data/stages.ts')
+const outputs = require('./data/outputs.ts')
+
+describe('Basic getStages functions', () => {
+    describe('getStages', () => {
+      it('should return a simple array of stages when VALID stages JSON is provided', () => {
+        const result = getStages.getStages(validStages)
+        const output = outputs.getStagesTest.output
+        expect(result).to.not.be.empty
+        expect(result).to.eql(output)
+      })
+
+      it('should return a useful error when INVALID stages JSON is provided', () => {
+        expect(() => getStages.getStages(invalidStages)).to.throw("Invalid array of STAGES passed to govuk-pages-plugin - please check the documentation to ensure the JSON schema you are passing matches what is expected")
+      })
+    });
+});

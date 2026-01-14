@@ -16,3 +16,8 @@ export const getPagesTest = {
     },
     ]
 } 
+
+export const getStagesTest = {
+    output: [
+    ]
+}

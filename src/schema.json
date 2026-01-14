@@ -1,5 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["mode"],
+
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["pages", "stages"]
+    }
+  },
   "oneOf": [
     { "$ref": "#/definitions/pages" },
     { "$ref": "#/definitions/stages" }
@@ -7,8 +16,9 @@
   "definitions": {
     "pages": {
       "type": "object",
-      "required": ["pages"],
+      "required": ["mode", "pages"],
       "properties": {
+        "mode": { "const": "pages" },
         "pages": {
           "type": "array",
           "items": {
@@ -29,8 +39,9 @@
     },
     "stages": {
       "type": "object",
-      "required": ["stages"],
+      "required": ["mode", "stages"],
       "properties": {
+        "mode": { "const": "stages" },
         "stages": {
           "type": "array",
           "items": {

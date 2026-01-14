@@ -14,7 +14,7 @@ describe('Basic getPages functions', () => {
       })
       
       it('should return a useful error when INVALID pages JSON is provided', () => {
-        expect(() => getPages.getPages(invalidPages)).to.throw("Invalid array of pages passed to govuk-pages-plugin")
+        expect(() => getPages.getPages(invalidPages)).to.throw("Invalid array of PAGES passed to govuk-pages-plugin - please check the documentation to ensure the JSON schema you are passing matches what is expected")
       })
     });
 });
