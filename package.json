@@ -14,7 +14,7 @@
     "url": "git+https://github.com/benwatsonuk/govuk-pages-plugin.git"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --require ts-node/register",
     "lint": "ts-standard",
     "build": "tsc"
   },
@@ -22,12 +22,14 @@
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {
+    "@types/mocha": "^10.0.10",
     "@types/node": "^25.0.8",
     "ajv": "^8.17.1",
     "chai": "^4.3.7",
     "json-schema-to-typescript": "^15.0.4",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "license": "MIT",
