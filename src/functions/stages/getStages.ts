@@ -21,11 +21,16 @@ export const mapPagesToStages = (
   stages: StagesArray,
   pages: PagesArray
 ): StagesWithPagesArray => {
+  let allPages = [...pages]; // Create a copy to avoid mutating the original
+
   const stagesWithPages: StagesWithPagesArray = stages.map((stage) => {
     // Filter pages that belong to this stage
     const pagesForStage = pages.filter(
       (page) => page.stageId === stage.id
     )
+
+    // Remove the filtered pages from allPages to get unused pages
+    allPages = allPages.filter(page => !pagesForStage.some(p => p.id === page.id));
 
     // Map sub-stages with their relevant pages
     let subStagesWithPages
@@ -52,6 +57,15 @@ export const mapPagesToStages = (
       pages: pagesForStage
     }
   })
-
+  
+  // add allPages to a misc category and bolt on to stagesWithPages
+  if (allPages.length > 0) {
+    stagesWithPages.push({
+      id: "misc",
+      title: "Miscellaneous",
+      description: "Pages not assigned to any stage or sub-stage",
+      pages: allPages
+    })
+  }
   return stagesWithPages
 }
