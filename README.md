@@ -1,4 +1,4 @@
-# govuk-plugin-page-index
+# govuk-pages-plugin
 A plugin for GOVUK Prototype Kit that shows pages in an index (list) so that users can navigate directly to them.
 
 For more information about the GOV.UK Prototype kit:

@@ -1,8 +1,17 @@
 export interface Page {
-  id: string
+  id: number
   title: string
+  type: string
+  route: string
+  description?: string
 }
 
-export interface PageArray {
-  pages: Page[]
+export interface Stage {
+  id: string
+  title: string
+  route?: string
+  description: string | null
+  subStages?: Stage[]
 }
+export type StagesArray = Stage[];
+export type PagesArray = Page[];
