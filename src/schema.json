@@ -2,16 +2,20 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "required": ["mode"],
-
   "properties": {
     "mode": {
       "type": "string",
       "enum": ["pages", "stages"]
     }
   },
-  "oneOf": [
-    { "$ref": "#/definitions/pages" },
-    { "$ref": "#/definitions/stages" }
+  "allOf": [
+    {
+      "if": {
+        "properties": { "mode": { "const": "pages" } }
+      },
+      "then": { "$ref": "#/definitions/pages" },
+      "else": { "$ref": "#/definitions/stages" }
+    }
   ],
   "definitions": {
     "pages": {
@@ -48,13 +52,13 @@
             "type": "object",
             "required": ["id", "title", "route"],
             "properties": {
-              "id": { "type": "integer" },
+              "id": { "type": "string" },
               "title": { "type": "string" },
               "route": { "type": "string" },
               "description": { "type": ["string", "null"] },
               "subStages": {
                 "type": "array",
-                "items": { 
+                "items": {
                   "type": "object",
                   "required": ["id", "title", "route"],
                   "properties": {
@@ -62,7 +66,8 @@
                     "title": { "type": "string" },
                     "route": { "type": "string" },
                     "description": { "type": ["string", "null"] }
-                  }
+                  },
+                  "additionalProperties": true
                 }
               }
             },

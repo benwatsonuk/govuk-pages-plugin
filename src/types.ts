@@ -6,12 +6,16 @@ export interface Page {
   description?: string
 }
 
+type SubStage = Omit<Stage, 'id' | 'subStages'> & {
+  id: number
+}
+
 export interface Stage {
   id: string
   title: string
   route?: string
   description: string | null
-  subStages?: Stage[]
+  subStages?: SubStage[]
 }
 
 export type StagesArray = Stage[];
