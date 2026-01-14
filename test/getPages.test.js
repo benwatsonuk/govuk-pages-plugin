@@ -9,7 +9,6 @@ describe('Basic getPages functions', () => {
       it('should return a simple array of pages when VALID pages JSON is provided', () => {
         const result = getPages.getPages(validPages)
         const output = outputs.getPagesTest.output
-        expect(result).to.not.be.empty
         expect(result).to.eql(output)
       })
       

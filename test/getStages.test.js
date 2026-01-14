@@ -9,7 +9,18 @@ describe('Basic getStages functions', () => {
       it('should return a simple array of stages when VALID stages JSON is provided', () => {
         const result = getStages.getStages(validStages)
         const output = outputs.getStagesTest.output
-        expect(result).to.not.be.empty
+        expect(result).to.eql(output)
+      })
+
+      it('should return a useful error when INVALID stages JSON is provided', () => {
+        expect(() => getStages.getStages(invalidStages)).to.throw("Invalid array of STAGES passed to govuk-pages-plugin - please check the documentation to ensure the JSON schema you are passing matches what is expected")
+      })
+    });
+
+     describe('getStagesWithPages', () => {
+      it('should return an array of stages with pages inside when VALID stages and pages JSON are provided', () => {
+        const result = getStages.getStagesWithPages(validStages)
+        const output = outputs.getStagesTest.output
         expect(result).to.eql(output)
       })
 
