@@ -1,12 +1,12 @@
 import Ajv from "ajv"
 import schema from "./schema.json"
-import { PageArray } from "./types"
+import { PagesArray } from "./types"
 
 const ajv = new Ajv({ allErrors: true })
 
 const validate = ajv.compile(schema)
 
-export function validatePageArray(pages: unknown): PageArray {
+export function validatePagesArray(pages: unknown): PagesArray {
   if (!validate(pages)) {
     const message = validate.errors
       ?.map(err => `${err.instancePath || "Pages"} ${err.message}`)
@@ -17,5 +17,5 @@ export function validatePageArray(pages: unknown): PageArray {
     )
   }
 
-  return pages as PageArray
+  return pages as PagesArray
 }

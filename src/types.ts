@@ -13,5 +13,6 @@ export interface Stage {
   description: string | null
   subStages?: Stage[]
 }
+
 export type StagesArray = Stage[];
 export type PagesArray = Page[];
