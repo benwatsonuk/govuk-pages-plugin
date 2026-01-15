@@ -6,7 +6,7 @@ export interface Page {
   description?: string
   stage?: {
     main: string,
-    subStage?: number
+    subStage?: number | string
   }
 }
 

@@ -37,7 +37,7 @@
                 "type": ["object"],
                 "properties": {
                   "main": { "type": ["string"] },
-                  "subStage": { "type": ["integer"] }
+                  "subStage": { "type": ["integer", "string"] }
                 },
                 "additionalProperties": false
               },
