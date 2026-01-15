@@ -1,10 +1,17 @@
+import {Router} from "express"
 import { getPages } from "./functions/pages/getPages"
 import { PagesArray, StagesArray } from "./types"
-export = function govukPagesPlugin(router: any, pages: PagesArray, stages?: StagesArray) {
 
-  router.get("/pages", (req: any, res: any) => {
-    res.render("page-index", {
-      pages: getPages(pages)
-    })
-  })
+function pageIndex(pages: PagesArray, view: string) {
+  return (req: any, res: any) => {
+    res.render(view, { pages: pages })
+  }
+}
+
+export = function govukPagesPlugin(pages: PagesArray, stages?: StagesArray) {
+
+  const router = Router()
+  router.get("/", pageIndex(getPages(pages), "page-index"))
+  return router
+
 } 
