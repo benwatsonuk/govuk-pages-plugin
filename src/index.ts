@@ -1,8 +1,10 @@
-export = function govukPagesPlugin(router: any, userConfig: unknown) {
+import { getPages } from "./functions/pages/getPages"
+import { PagesArray, StagesArray } from "./types"
+export = function govukPagesPlugin(router: any, pages: PagesArray, stages?: StagesArray) {
 
   router.get("/pages", (req: any, res: any) => {
-    res.render("views/page-index", {
-      pages: 'Hello, world!'
+    res.render("page-index", {
+      pages: getPages(pages)
     })
   })
-}
+} 

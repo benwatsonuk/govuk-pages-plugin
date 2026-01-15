@@ -15,8 +15,8 @@
   },
   "scripts": {
     "test": "mocha --require ts-node/register",
-    "lint": "ts-standard",
-    "build": "tsc"
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc && cpx \"src/{assets,views}/**/*\" dist"
   },
   "dependencies": {
     "nunjucks": "^3.2.4"
@@ -26,9 +26,11 @@
     "@types/node": "^25.0.8",
     "ajv": "^8.17.1",
     "chai": "^4.3.7",
+    "cpx": "^1.5.0",
     "json-schema-to-typescript": "^15.0.4",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
+    "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
