@@ -4,8 +4,10 @@ export interface Page {
   type: string
   route: string
   description?: string
-  stageId?: string
-  subStageId?: number
+  stage?: {
+    main: string,
+    subStage?: number
+  }
 }
 
 type SubStage = Omit<Stage, 'id' | 'subStages'> & {

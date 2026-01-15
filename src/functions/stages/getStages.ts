@@ -26,7 +26,7 @@ export const mapPagesToStages = (
   const stagesWithPages: StagesWithPagesArray = stages.map((stage) => {
     // Filter pages that belong to this stage
     const pagesForStage = pages.filter(
-      (page) => page.stageId === stage.id
+      (page) => page.stage && page.stage.main === stage.id
     )
 
     // Only add the stage if it has pages (after all, why return empty stages?)
@@ -41,7 +41,7 @@ export const mapPagesToStages = (
         subStagesWithPages = stage.subStages.map((subStage) => {
           // Filter pages that belong to this sub-stage
           const pagesForSubStage = pagesForStage.filter(
-            (page) => page.subStageId === subStage.id
+            (page) => page.stage && page.stage.subStage === subStage.id
           )
 
          if (pagesForSubStage.length > 0) {

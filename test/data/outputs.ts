@@ -6,8 +6,10 @@ export const getPagesTest = {
         type: "email",
         description: "A description about item 1",
         route: "/a/a/1",    
-        stageId: 'stage1',
-        subStageId: 1
+        stage: {
+            main: "stage1",
+            subStage: 1,
+        }
     },
     {
         id: 2,
@@ -15,8 +17,10 @@ export const getPagesTest = {
         type: 'email',
         description: 'A description about item 2',
         route: '/b/b/2',
-        stageId: 'stage2',
-        subStageId: 2
+        stage: {
+            main: "stage2",
+            subStage: 2,
+        }
     },
     {
         id: 3,
@@ -115,8 +119,10 @@ export const getStagesWithPagesTestB = {
                 type: "email",
                 description: "A description about item 1",
                 route: "/a/a/1",
-                stageId: "stage1",
-                subStageId: 1,
+                stage: {
+                    main: "stage1",
+                    subStage: 1,
+                }
                 },
             ],
             }
@@ -128,8 +134,10 @@ export const getStagesWithPagesTestB = {
             type: "email",
             description: "A description about item 1",
             route: "/a/a/1",
-            stageId: "stage1",
-            subStageId: 1,
+            stage: {
+                main: "stage1",
+                subStage: 1,
+            }
             },
         ],
     },
@@ -149,8 +157,10 @@ export const getStagesWithPagesTestB = {
                 type: "email",
                 description: "A description about item 2",
                 route: "/b/b/2",
-                stageId: "stage2",
-                subStageId: 2,
+                stage: {
+                    main: "stage2",
+                    subStage: 2,
+                }
                 },
             ],
             },
@@ -162,8 +172,10 @@ export const getStagesWithPagesTestB = {
                 type: "email",
                 description: "A description about item 2",
                 route: "/b/b/2",
-                stageId: "stage2",
-                subStageId: 2,
+                stage: {
+                    main: "stage2",
+                    subStage: 2,
+                }
                 },
             ],
         },
