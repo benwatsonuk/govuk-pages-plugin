@@ -8,10 +8,10 @@
 
       <div class="page-index ">
         <h1 class="govuk-heading-l">Page Index</h1>
-        <p class="govuk-body">This is a list of all the pages in this prototype.</p>
+        <p class="govuk-body">This is a list of all the tracked pages in this prototype.</p>
         <ul class="govuk-list govuk-list--bullet">
           {% for page in pages %}
-            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            <li><a href="{{ page.route }}">{{ page.title }}</a></li>
           {% endfor %}
         </ul>
       </div>
