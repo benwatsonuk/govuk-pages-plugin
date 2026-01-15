@@ -8,12 +8,5 @@
   ],
   "sass": [
     "/dist/assets/styles/all.scss"
-  ],
-  "templates": [
-    {
-      "name": "Page Index",
-      "path": "/dist/views/page-index.html",
-      "type": "nunjucks"
-    }
   ]
 }

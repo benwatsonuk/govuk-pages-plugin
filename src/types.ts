@@ -15,7 +15,7 @@ type SubStage = Omit<Stage, 'id' | 'subStages'> & {
 }
 
 type SubStageWithPages = Omit<StageWithPages, 'id' | 'subStages'> & {
-  id: number
+  id: number | string
 }
 
 export interface Stage {
