@@ -1,0 +1,19 @@
+{
+	"meta": {
+		"description": "This plugin provides the ability to list desired pages in an index or user-flow view."
+	},
+	"nunjucksPaths": ["/dist/views"],
+  "assets": [
+    "/dist/assets"
+  ],
+  "sass": [
+    "/dist/assets/styles/all.scss"
+  ],
+  "templates": [
+    {
+      "name": "Page Index",
+      "path": "/dist/views/page-index.html",
+      "type": "nunjucks"
+    }
+  ]
+}

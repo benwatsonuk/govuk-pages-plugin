@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["mode"],
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["pages", "stages"]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "mode": { "const": "pages" } }
+      },
+      "then": { "$ref": "#/definitions/pages" },
+      "else": { "$ref": "#/definitions/stages" }
+    }
+  ],
+  "definitions": {
+    "pages": {
+      "type": "object",
+      "required": ["mode", "pages"],
+      "properties": {
+        "mode": { "const": "pages" },
+        "pages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "title", "route"],
+            "properties": {
+              "id": { "type": "integer" },
+              "title": { "type": "string" },
+              "route": { "type": "string" },
+              "type": { "type": ["string", "null"] },
+              "stage": {
+                "type": ["object"],
+                "properties": {
+                  "main": { "type": ["string"] },
+                  "subStage": { "type": ["integer", "string"] }
+                },
+                "additionalProperties": false
+              },
+              "description": { "type": ["string", "null"] }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "stages": {
+      "type": "object",
+      "required": ["mode", "stages"],
+      "properties": {
+        "mode": { "const": "stages" },
+        "stages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "title", "route"],
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "route": { "type": "string" },
+              "description": { "type": ["string", "null"] },
+              "subStages": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "title", "route"],
+                  "properties": {
+                    "id": { "type": "integer" },
+                    "title": { "type": "string" },
+                    "route": { "type": "string" },
+                    "description": { "type": ["string", "null"] }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

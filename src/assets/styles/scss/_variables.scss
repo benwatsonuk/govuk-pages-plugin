@@ -1,0 +1,19 @@
+// Assets - these can all be overridden
+$page-flow-assets: '/extension-assets/govuk-page-flow-plugin/app/assets/';
+$page-flow-images: $page-flow-assets + 'images/';
+$icons: $page-flow-images + 'page-types';
+
+// Stock colours for stages
+$stage-color--1: #006c56;
+$stage-color--2: #00beb7;
+$stage-color--3: pink;
+$stage-color--4: #f47738;
+$stage-color--5: #ccc;
+$stage-color--6: #005ea5;
+$stage-color--7: #004432;
+$stage-color--8: #f47738;
+$stage-color--9: #3b1f5f;
+$stage-color--10: #ffdd00;
+$stage-color--documents: purple;
+$stage-color--notifications: teal;
+$stage-color--authentication: crimson;
