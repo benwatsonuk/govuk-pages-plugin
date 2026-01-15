@@ -9,9 +9,10 @@ export const pageIndexData = (pages: PagesArray) => {
   return getPages(pages)
 }
 
-export const pageIndex = (pages: PagesArray, view: string) => {
+export const pageIndex = (pages: PagesArray, pageType: string) => {
+  pageType = pageType || "page-index"
   return (req: any, res: any) => {
-    res.render(view, { pages: pages })
+    res.render(pageType, { pages: pages })
   }
 }
 
@@ -31,7 +32,7 @@ export const stageIndex = (stages: StagesArray, pages: PagesArray, pageType?: st
 /*--- THE MAIN USER ROUTES ---*/
 
 export const govukPagesPlugin = (pages: PagesArray, stages?: StagesArray, pageType?: string) => {
-  pageType = pageType || "page-index"
+  pageType = pageType || "page-index" // Options can be 'all', 'page-index', 'stage-index' - in future could be 'user-flow-index', etc
   const router = Router()
   // This is the default offering from the plugin - it is expected that must users will use this. It should be robust
   router.get("/", pageIndex(pageIndexData(pages), pageType))

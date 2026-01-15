@@ -4,4 +4,4 @@
 
 ### Notes
 
-- Initial release
+- Initial release. Validates page and stage data and returns very simple views for page indexes so that users can easily navigate to selected pages.

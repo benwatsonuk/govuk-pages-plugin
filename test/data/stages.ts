@@ -42,6 +42,7 @@ export const validStages: StagesArray = [
     ]
   }
 ];
+
 export const invalidStages: any = [
   {
     badValue: 'stage1',
