@@ -19,9 +19,10 @@ export const stageIndexData = (stages: StagesArray, pages: PagesArray) => {
   return getStagesWithPages(stages, pages)
 }
 
-export const stageIndex = (pages: PagesArray, stages: StagesArray, view: string) => {
+export const stageIndex = (pages: PagesArray, stages: StagesArray, pageType?: string) => {
+  pageType = pageType || "stage-index"
   return (req: any, res: any) => {
-    res.render(view, { pages: stageIndexData(stages, pages)})
+    res.render(pageType, { stages: stageIndexData(stages, pages) })
   }
 }
 

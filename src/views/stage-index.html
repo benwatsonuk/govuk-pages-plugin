@@ -9,16 +9,19 @@
       <div class="page-index ">
         <h1 class="govuk-heading-l">Stage Index</h1>
         <p class="govuk-body">This is a list of all the tracked pages in this prototype, grouped by the stage that they appear in.</p>
-        <ul class="govuk-list govuk-list--bullet">
+        <!-- {{ stages | dump  }} -->
           {% for stage in stages %}
             <h2>{{ stage.title }}</h2>
+            {% if stage.description %}
+            <p class="govuk-body-s">{{ stage.description }}</p>
+            {% endif %}
             <ol>
-            {% for page in pages %}
+            {% for page in stage.pages %}
               <li><a href="{{ page.route }}">{{ page.title }}</a></li>
             {% endfor %}
             </ol>
+            <hr/>
           {% endfor %}
-        </ul>
       </div>
 
 {% endblock %}
