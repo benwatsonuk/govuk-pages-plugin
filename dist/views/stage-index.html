@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Stage Index
+{% endblock %}
+
+{% block content %}
+
+      <div class="page-index ">
+        <h1 class="govuk-heading-l">Stage Index</h1>
+        <p class="govuk-body">This is a list of all the tracked pages in this prototype, grouped by the stage that they appear in.</p>
+        <ul class="govuk-list govuk-list--bullet">
+          {% for stage in stages %}
+            <h2>{{ stage.title }}</h2>
+            <ol>
+            {% for page in pages %}
+              <li><a href="{{ page.route }}">{{ page.title }}</a></li>
+            {% endfor %}
+            </ol>
+          {% endfor %}
+        </ul>
+      </div>
+
+{% endblock %}

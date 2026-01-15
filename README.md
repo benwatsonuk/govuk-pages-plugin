@@ -20,7 +20,7 @@ npm install https://github.com/benwatsonuk/govuk-pages-plugin
 ### 2. Add the following code to your prototype's routes.js file(s)
 
 ```js
-const pagesPlugin = require('@benwatsonuk/govuk-pages-plugin')
+const { govukPagesPlugin } = require('@benwatsonuk/govuk-pages-plugin')
 ```
 
 If you use multiple routes files, include the above code on the pages that you wish to use the features of the plugin on.
