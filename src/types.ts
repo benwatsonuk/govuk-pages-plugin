@@ -35,4 +35,4 @@ export interface StageWithPages {
 
 export type StagesArray = Stage[];
 export type PagesArray = Page[];
-export type StagesWithPagesArray = StageWithPages[];
+export type StagesWithPagesArray = StageWithPages[] | [];

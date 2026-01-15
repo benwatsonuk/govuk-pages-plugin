@@ -21,7 +21,7 @@ describe('Basic getStages functions', () => {
      describe('getStagesWithPages', () => {
       it('should return an array of stages with pages inside when VALID stages and pages JSON are provided', () => {
         const result = getStages.getStagesWithPages(validStages, validPages)
-        const output = outputs.getStagesTest.output
+        const output = outputs.getStagesWithPagesTest.output
         expect(result).to.eql(output)
       })
 

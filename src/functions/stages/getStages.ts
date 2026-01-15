@@ -29,40 +29,44 @@ export const mapPagesToStages = (
       (page) => page.stageId === stage.id
     )
 
-    // Remove the filtered pages from allPages to get unused pages
-    allPages = allPages.filter(page => !pagesForStage.some(p => p.id === page.id));
+    // Only add the stage if it has pages (after all, why return empty stages?)
+    if (pagesForStage.length > 0) {
 
-    // Map sub-stages with their relevant pages
-    let subStagesWithPages
-    if (stage.subStages) {
-      subStagesWithPages = stage.subStages.map((subStage) => {
-        // Filter pages that belong to this sub-stage
-        const pagesForSubStage = pagesForStage.filter(
-          (page) => page.subStageId === String(subStage.id)
-        )
-        return {
-          id: subStage.id,
-          title: subStage.title,
-          description: subStage.description,
-          pages: pagesForSubStage
-        }
-      })
-    }
+      // Remove the filtered pages from allPages to get unused pages
+      allPages = allPages.filter(page => !pagesForStage.some(p => p.id === page.id));
 
-    return {
-      id: stage.id,
-      title: stage.title,
-      description: stage.description,
-      subStages: subStagesWithPages,
-      pages: pagesForStage
+      // Map sub-stages with their relevant pages
+      let subStagesWithPages
+      if (stage.subStages) {
+        subStagesWithPages = stage.subStages.map((subStage) => {
+          // Filter pages that belong to this sub-stage
+          const pagesForSubStage = pagesForStage.filter(
+            (page) => page.subStageId === String(subStage.id)
+          )
+          return {
+            id: subStage.id,
+            title: subStage.title,
+            description: subStage.description,
+            pages: pagesForSubStage
+          }
+        })
+      }
+
+      return {
+        id: stage.id,
+        title: stage.title,
+        description: stage.description,
+        subStages: subStagesWithPages,
+        pages: pagesForStage
+      }
     }
-  })
+  }).filter(stage => stage !== undefined);
   
   // add allPages to a misc category and bolt on to stagesWithPages
   if (allPages.length > 0) {
     stagesWithPages.push({
-      id: "misc",
-      title: "Miscellaneous",
+      id: "unassigned",
+      title: "Unassigned",
       description: "Pages not assigned to any stage or sub-stage",
       pages: allPages
     })
