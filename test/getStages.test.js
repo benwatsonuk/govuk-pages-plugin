@@ -2,7 +2,7 @@ const expect = require('chai').expect
 
 const getStages = require('../src/functions/stages/getStages.ts')
 const {validStages, invalidStages} = require('./data/stages.ts')
-const {validPages, invalidPages} = require('./data/pages.ts')
+const {validPages, invalidPages, pagesWithNoStages} = require('./data/pages.ts')
 const outputs = require('./data/outputs.ts')
 
 describe('Basic getStages functions', () => {
@@ -21,7 +21,13 @@ describe('Basic getStages functions', () => {
      describe('getStagesWithPages', () => {
       it('should return an array of stages with pages inside when VALID stages and pages JSON are provided', () => {
         const result = getStages.getStagesWithPages(validStages, validPages)
-        const output = outputs.getStagesWithPagesTest.output
+        const output = outputs.getStagesWithPagesTestB.output
+        expect(result).to.eql(output)
+      })
+
+      it('should return an array with a single "Unassigned" stage with all unassigned pages inside when VALID stages and pages JSON are provided but pages have no parent stage', () => {
+        const result = getStages.getStagesWithPages(validStages, pagesWithNoStages)
+        const output = outputs.getStagesWithPagesTestA.output
         expect(result).to.eql(output)
       })
 

@@ -41,7 +41,7 @@ export const mapPagesToStages = (
         subStagesWithPages = stage.subStages.map((subStage) => {
           // Filter pages that belong to this sub-stage
           const pagesForSubStage = pagesForStage.filter(
-            (page) => page.subStageId === String(subStage.id)
+            (page) => page.subStageId === subStage.id
           )
           return {
             id: subStage.id,
