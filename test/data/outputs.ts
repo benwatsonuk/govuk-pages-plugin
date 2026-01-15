@@ -119,14 +119,7 @@ export const getStagesWithPagesTestB = {
                 subStageId: 1,
                 },
             ],
-            },
-            {
-            id: 2,
-            title: "Sub-stage 1-2",
-            description: "A description about sub-stage 1-2",
-            pages: [
-            ],
-            },
+            }
         ],
         pages: [
             {
@@ -145,13 +138,6 @@ export const getStagesWithPagesTestB = {
         title: "Stage 2",
         description: "A description about stage 2",
         subStages: [
-            {
-            id: 1,
-            title: "Sub-stage 2-1",
-            description: "A description about sub-stage 2-1",
-            pages: [
-            ],
-            },
             {
             id: 2,
             title: "Sub-stage 2-2",

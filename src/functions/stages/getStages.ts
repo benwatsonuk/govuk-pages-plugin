@@ -43,15 +43,18 @@ export const mapPagesToStages = (
           const pagesForSubStage = pagesForStage.filter(
             (page) => page.subStageId === subStage.id
           )
-          return {
-            id: subStage.id,
-            title: subStage.title,
-            description: subStage.description,
-            pages: pagesForSubStage
-          }
-        })
-      }
 
+         if (pagesForSubStage.length > 0) {
+            return {
+              id: subStage.id,
+              title: subStage.title,
+              description: subStage.description,
+              pages: pagesForSubStage
+            }
+          }
+        }).filter(subStage => subStage !== undefined)
+      } 
+    
       return {
         id: stage.id,
         title: stage.title,
