@@ -4,11 +4,26 @@
   Page Index
 {% endblock %}
 
+{% block beforeContent %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back(-1);"
+  }) }}
+{% endblock %}
+
 {% block content %}
 
       <div class="page-index ">
         <h1 class="govuk-heading-l">Page Index</h1>
-        <p class="govuk-body">This is a list of all tracked pages.</p>
+        {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+        {{ govukDetails({
+          summaryText: "What is the 'Page Index'?",
+          html: "<p>This page contains links to tracked pages in this prototype. It is useful for navigating the prototype without having to go through flows.</p><p class='govuk-body-s'> Note, the prototype might contain more pages than are listed here.</p>"
+        }) }} 
+
         <ul class="govuk-list govuk-list--number">
           {% for page in pages %}
             <li><a href="{{ page.route }}">{{ page.title }}</a></li>

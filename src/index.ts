@@ -19,7 +19,7 @@ export const stageIndexData = (stages: StagesArray, pages: PagesArray) => {
   return getStagesWithPages(stages, pages)
 }
 
-export const stageIndex = (pages: PagesArray, stages: StagesArray, pageType?: string) => {
+export const stageIndex = (stages: StagesArray, pages: PagesArray, pageType?: string) => {
   pageType = pageType || "stage-index"
   return (req: any, res: any) => {
     res.render(pageType, { stages: stageIndexData(stages, pages) })
@@ -36,5 +36,4 @@ export const govukPagesPlugin = (pages: PagesArray, stages?: StagesArray, pageTy
   // This is the default offering from the plugin - it is expected that must users will use this. It should be robust
   router.get("/", pageIndex(pageIndexData(pages), pageType))
   return router
-
 } 
