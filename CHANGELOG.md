@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.0
+
+### Features
+
+- Basic support for User/Page Flows
+
 ## v1.0.0
 
 ### Notes

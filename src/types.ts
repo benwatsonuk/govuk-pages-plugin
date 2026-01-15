@@ -1,3 +1,5 @@
+// Satrt Pages 
+
 export interface Page {
   id: number
   title: string
@@ -9,6 +11,10 @@ export interface Page {
     subStage?: number | string
   }
 }
+
+// End Pages
+
+// Start Stages
 
 type SubStage = Omit<Stage, 'id' | 'subStages'> & {
   id: number
@@ -34,7 +40,25 @@ export interface StageWithPages {
   pages: Page[]
 }
 
+// End Pages
+
+// Start Page Flows
+
+export interface PageFlowStep {
+  pageId: number
+}
+
+export interface PageFlow {
+  id: number
+  title: string
+  description?: string | null
+  user?: string | null
+  steps: PageFlowStep[]
+}
+
+// End Page Flows
 
 export type StagesArray = Stage[];
 export type PagesArray = Page[];
 export type StagesWithPagesArray = StageWithPages[] | [];
+export type PageFlowArray = PageFlow[] | [];
