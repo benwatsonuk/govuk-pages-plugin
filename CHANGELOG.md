@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.1
+
+### Fixes
+- AJV is promoted to a dependency from a dev dependency. This was causing devDependency pruning actions on Heroku to cause prototypes to fall over
+
 ## v1.0.0
 
 ### Notes
