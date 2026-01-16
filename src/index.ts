@@ -1,10 +1,12 @@
 import {Router} from "express"
 import { getPages } from "./functions/pages/getPages"
 import { getStagesWithPages } from "./functions/stages/getStages"
-import { PagesArray, StagesArray } from "./types"
+import { getFlows } from "./functions/flows/getFlows"
+import { PagesArray, StagesArray, PageFlowArray } from "./types"
 
 /*--- UTILITIES (used by supplied routes AND made available to plugin users) ---*/
 
+// Pages
 export const pageIndexData = (pages: PagesArray) => {
   return getPages(pages)
 }
@@ -16,6 +18,7 @@ export const pageIndex = (pages: PagesArray, pageType: string) => {
   }
 }
 
+// Stages
 export const stageIndexData = (stages: StagesArray, pages: PagesArray) => {
   return getStagesWithPages(stages, pages)
 }
@@ -24,6 +27,18 @@ export const stageIndex = (stages: StagesArray, pages: PagesArray, pageType?: st
   pageType = pageType || "stage-index"
   return (req: any, res: any) => {
     res.render(pageType, { stages: stageIndexData(stages, pages) })
+  }
+}
+
+// Flows 
+export const flowIndexData = (flows: PageFlowArray, pages: PagesArray, stages?: StagesArray) => {
+  return stages ? getFlows(flows, pages, stages) :  getFlows(flows, pages)
+}
+
+export const flowIndex = (flows: PageFlowArray, pages: PagesArray, stages?: StagesArray, pageType?: string) => {
+  pageType = pageType || "flow-index"
+  return (req: any, res: any) => {
+    res.render(pageType, { flows: flowIndexData(flows, pages, stages) })
   }
 }
 

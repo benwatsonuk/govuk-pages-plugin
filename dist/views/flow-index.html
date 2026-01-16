@@ -24,16 +24,25 @@
           html: "<p>Page Flows are a way of tracking user journeys through a prototype. They help visualise end to end flows for a given user, so that we may see them from an elevated position without the need for creating additional documentation.</p>
           <p class='govuk-body-s'> Note, the prototype might contain more user journeys than are listed here.</p>"
         }) }} 
-        <!-- Accordions might be a good shout here? -->
+
+        <!-- {% set items = [] %}
+
+        {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+        {{ govukAccordion({
+          id: "page-flows-accordion",
+          items: items
+        }) }} -->
+
         <ul class="govuk-list govuk-list--number">
-          {% for flow in pageFlows %}
+          {% for flow in flows %}
             <h2>{{ flow.title }}</h2>
             {% if flow.description %}
             <p class="govuk-body-s">{{ flow.description }}</p>
             {% endif %}
             <ol>
             {% for step in flow.steps %}
-              <li><Step>{{ step.pageId }}</Step></li>
+              <li><a href="{{ step.route }}">{{ step.title }}</a></li>
             {% endfor %}
             </ol>
             <hr/>
