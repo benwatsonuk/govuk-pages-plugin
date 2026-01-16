@@ -11,7 +11,17 @@ export const getFlows = (flows: PageFlowArray, pages: PagesArray, stages?: Stage
   return mapPagesToFlow(validatedPageFlows, validatedPages)
 }
 
-const mapPagesToFlow = (flow: PageFlowArray, pages: PagesArray, stages?: StagesArray) => {
-  // To be implemented later
-  return flow
+const mapPagesToFlow = (flows: PageFlowArray, pages: PagesArray, stages?: StagesArray) => {
+  const toReturn = []
+  for (const flow of flows) {
+    const mappedFlow = []
+    for (const step of flow.steps) {
+      const page = pages.find(p => p.id === step.pageId)
+      if (page) {
+        mappedFlow.push({...page})
+      }
+    }
+    toReturn.push({...flow, steps: mappedFlow})
+  }
+  return toReturn
 }

@@ -205,7 +205,7 @@ export const getPageFlowTestA = {
         user: 'User A',
         steps: [
         {
-            pageId: 1,
+            id: 1,
             title: 'Title 1',
             type: 'email',
             description: 'A description about item 1',
@@ -213,7 +213,7 @@ export const getPageFlowTestA = {
             stage: {main: 'stage1', subStage: 1}
         },
         {
-            pageId: 2,
+            id: 2,
             title: 'Title 2',
             type: 'email',
             description: 'A description about item 2',
@@ -229,7 +229,7 @@ export const getPageFlowTestA = {
         user: 'User B',
         steps: [
         {
-            pageId: 2,
+            id: 2,
             title: 'Title 2',
             type: 'email',
             description: 'A description about item 2',
@@ -237,7 +237,7 @@ export const getPageFlowTestA = {
             stage: {main: 'stage2', subStage: 2}
         },
         {
-            pageId: 3,
+            id: 3,
             title: 'Title 3',
             type: 'email',
             description: 'A description about item 3',
@@ -256,7 +256,7 @@ export const getPageFlowTestB = {
         user: 'User A',
         steps: [
         {
-            pageId: 1,
+            id: 1,
             title: 'Title 1',
             type: 'email',
             description: 'A description about item 1',
@@ -264,7 +264,7 @@ export const getPageFlowTestB = {
             stage: {main: 'stage1', subStage: 1}
         },
         {
-            pageId: 2,
+            id: 2,
             title: 'Title 2',
             type: 'email',
             description: 'A description about item 2',
@@ -280,7 +280,7 @@ export const getPageFlowTestB = {
         user: 'User B',
         steps: [
         {
-            pageId: 2,
+            id: 2,
             title: 'Title 2',
             type: 'email',
             description: 'A description about item 2',
@@ -288,7 +288,7 @@ export const getPageFlowTestB = {
             stage: {main: 'stage2', subStage: 2}
         },
         {
-            pageId: 3,
+            id: 3,
             title: 'Title 3',
             type: 'email',
             description: 'A description about item 3',

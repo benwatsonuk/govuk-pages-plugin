@@ -19,6 +19,7 @@
     "build": "npm run clean && tsc && cpx \"src/{assets,views}/**/*\" dist"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
     "express": "^4.18.2",
     "nunjucks": "^3.2.4"
   },
@@ -26,7 +27,6 @@
     "@types/express": "^5.0.6",
     "@types/mocha": "^10.0.10",
     "@types/node": "^25.0.8",
-    "ajv": "^8.17.1",
     "chai": "^4.3.7",
     "cpx": "^1.5.0",
     "json-schema-to-typescript": "^15.0.4",
