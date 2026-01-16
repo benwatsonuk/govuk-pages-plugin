@@ -2,7 +2,7 @@
   "name": "@benwatsonuk/govuk-pages-plugin",
   "author": "BenWatsonUK",
   "description": "A plugin to visualise selected pages of a GOV.UK prototype with a linear user journey or page index.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "homepage": "https://github.com/benwatsonuk/govuk-pages-plugin",
@@ -19,6 +19,7 @@
     "build": "npm run clean && tsc && cpx \"src/{assets,views}/**/*\" dist"
   },
   "dependencies": {
+    "ajv": "^8.17.1",
     "express": "^4.18.2",
     "nunjucks": "^3.2.4"
   },
@@ -26,7 +27,6 @@
     "@types/express": "^5.0.6",
     "@types/mocha": "^10.0.10",
     "@types/node": "^25.0.8",
-    "ajv": "^8.17.1",
     "chai": "^4.3.7",
     "cpx": "^1.5.0",
     "json-schema-to-typescript": "^15.0.4",
