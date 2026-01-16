@@ -1,6 +1,6 @@
 import Ajv from "ajv"
 import schema from "./schema.json"
-import { PagesArray, StagesArray } from "./types"
+import { PageFlowArray, PagesArray, StagesArray } from "./types"
 
 const ajv = new Ajv({ allErrors: true, strict: false })
 
@@ -32,4 +32,19 @@ export function validateStagesArray(stages: unknown): StagesArray {
   }
 
   return stages as StagesArray
+}
+
+
+export function validatePageFlowArray(flows: PageFlowArray, pages: PagesArray, stages?: StagesArray): PageFlowArray {
+  if (!validate({ mode: "flows", flows: flows, pages: pages, stages: stages })) {
+    const message = validate.errors
+      ?.map(err => `${err.instancePath || "Flows"} ${err.message}`)
+      .join("\n")
+
+    throw new Error(
+      `Invalid array of FLOWS passed to govuk-pages-plugin - please check the documentation to ensure the JSON schema you are passing matches what is expected:\n${message}`
+    )
+  }
+
+  return flows as PageFlowArray
 }
