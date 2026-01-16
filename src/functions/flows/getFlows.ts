@@ -1,8 +1,9 @@
-import { PageFlowArray, StagesArray } from "../../types"
-import { validatePageFlowArray } from "../../validate"
+import { PageFlowArray, PagesArray, StagesArray } from "../../types"
+import { validatePageFlowArray, validatePagesArray } from "../../validate"
 
-export const getPageFlows = (pageFlows: PageFlowArray, pages: PageFlowArray, stages?: StagesArray) => {
-  const validatedPageFlows = validatePageFlowArray(pageFlows)
+export const getFlows = (flows: PageFlowArray, pages: PagesArray, stages?: StagesArray) => {
+  const validatedPageFlows = validatePageFlowArray(flows)
+  validatePagesArray(pages)
   return validatedPageFlows
 }
 

@@ -15,7 +15,7 @@ export const validFlow: PageFlowArray = [
       }
     ]
   },
-    {
+  {
     id: 2,
     title: 'Flow 2',
     description: 'A description of Flow 2',
@@ -31,7 +31,7 @@ export const validFlow: PageFlowArray = [
   }
 ];
 
-export const invalidPageFlow: any = [
+export const invalidFlow: any = [
   {
     badKey: 1,
     title: 'Flow 1',

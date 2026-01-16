@@ -105,7 +105,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["id", "title", "route"],
+            "required": ["id", "title", "steps"],
             "properties": {
               "id": { "type": "integer" },
               "title": { "type": "string" },
@@ -115,11 +115,11 @@
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["id"],
+                  "required": ["pageId"],
                   "properties": {
-                    "id": { "type": ["integer"] }
+                    "pageId": { "type": ["integer"] }
                   },
-                  "additionalProperties": true
+                  "additionalProperties": false
                 },
                 "additionalProperties": false
               }

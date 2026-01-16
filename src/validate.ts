@@ -35,8 +35,8 @@ export function validateStagesArray(stages: unknown): StagesArray {
 }
 
 
-export function validatePageFlowArray(flows: PageFlowArray, pages: PagesArray, stages?: StagesArray): PageFlowArray {
-  if (!validate({ mode: "flows", flows: flows, pages: pages, stages: stages })) {
+export function validatePageFlowArray(flows: PageFlowArray): PageFlowArray {
+  if (!validate({ mode: "flows", flows: flows})) {
     const message = validate.errors
       ?.map(err => `${err.instancePath || "Flows"} ${err.message}`)
       .join("\n")
