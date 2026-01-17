@@ -1,4 +1,4 @@
-  .govuk-pages-plugin__stages {
+.govuk-pages-plugin__stages {
 
   &__item {
     border-top: 10px solid;
@@ -39,17 +39,3 @@
     }
   }
 }
-
-  // .page-flow--stages, .user-flow--stages {
-  //   @extend .govuk-body;
-  //   padding: 0;
-  // }
-  // .user-flow-item--stage {
-  //   display: inline-block;
-  // }
-
-  // .user-flow-page-item {
-  //   border-top: 1px solid #333;
-  //   padding-top:1em;
-  //   //margin-bottom: 2em;
-  // }

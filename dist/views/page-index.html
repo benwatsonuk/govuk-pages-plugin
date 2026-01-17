@@ -24,9 +24,11 @@
           html: "<p>This page contains links to tracked pages in this prototype. It is useful for navigating the prototype without having to go through flows.</p><p class='govuk-body-s'> Note, the prototype might contain more pages than are listed here.</p>"
         }) }} 
 
+        {% from "./components/pageItem.njk" import pageItem %}
+
         <ul class="govuk-list govuk-list--number">
           {% for page in pages %}
-            <li><a href="{{ page.route }}">{{ page.title }}</a></li>
+            <li>{{ pageItem({page: page}) }}</li>
           {% endfor %}
         </ul>
       </div>
