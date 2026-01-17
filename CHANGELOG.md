@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.1
+
+### Fixes
+- Flow page fix - duplicate flows removed
+
 ## v1.1.0
 
 ### Features

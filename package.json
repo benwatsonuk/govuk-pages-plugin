@@ -2,7 +2,7 @@
   "name": "@benwatsonuk/govuk-pages-plugin",
   "author": "BenWatsonUK",
   "description": "A plugin to visualise selected pages of a GOV.UK prototype with a linear user journey or page index.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "homepage": "https://github.com/benwatsonuk/govuk-pages-plugin",
