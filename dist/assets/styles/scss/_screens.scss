@@ -1,0 +1,46 @@
+.govuk-pages-plugin__screen-icon {
+    width: 100px;
+    height: 100px;
+    display: block;
+    background-repeat: no-repeat;
+    &--email {
+    background-image: url($icons + '/email.svg');
+    background-size: contain;
+    }
+    &--text-input {
+    background-image: url($icons + '/text-input.svg');
+    background-size: contain;
+    }
+    &--dashboard, &--content-page {
+    background-image: url($icons + '/content-page.svg');
+    background-size: contain;
+    }
+    &--radio-input {
+    background-image: url($icons + '/radio-input.svg');
+    background-size: contain;
+    }
+    &--checkbox-input {
+    background-image: url($icons + '/checkbox-input.svg');
+    background-size: contain;
+    }
+    &--check-answers {
+    background-image: url($icons + '/check-answers.svg');
+    background-size: contain;
+    }
+    &--confirmation {
+    background-image: url($icons + '/confirmation.svg');
+    background-size: contain;
+    }
+    &--task-list {
+    background-image: url($icons + '/task-list.svg');
+    background-size: contain;
+    }
+    &--start-page {
+    background-image: url($icons + '/start-page.svg');
+    background-size: contain;
+    }
+    &--checkbox-page {
+    background-image: url($icons + '/checkbox-page.svg');
+    background-size: contain;
+    }
+}
