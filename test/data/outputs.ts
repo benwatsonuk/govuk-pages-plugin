@@ -195,3 +195,105 @@ export const getStagesWithPagesTestB = {
         }
     ]
 }
+
+export const getPageFlowTestA = {
+    output: [
+    {
+        id: 1,
+        title: 'Flow 1',
+        description: 'A description of Flow 1',
+        user: 'User A',
+        steps: [
+        {
+            id: 1,
+            title: 'Title 1',
+            type: 'email',
+            description: 'A description about item 1',
+            route: '/a/a/1',
+            stage: {main: 'stage1', subStage: 1}
+        },
+        {
+            id: 2,
+            title: 'Title 2',
+            type: 'email',
+            description: 'A description about item 2',
+            route: '/b/b/2',
+            stage: {main: 'stage2', subStage: 2}
+        }
+        ]
+    },
+    {
+        id: 2,
+        title: 'Flow 2',
+        description: 'A description of Flow 2',
+        user: 'User B',
+        steps: [
+        {
+            id: 2,
+            title: 'Title 2',
+            type: 'email',
+            description: 'A description about item 2',
+            route: '/b/b/2',
+            stage: {main: 'stage2', subStage: 2}
+        },
+        {
+            id: 3,
+            title: 'Title 3',
+            type: 'email',
+            description: 'A description about item 3',
+            route: '/a/b/3'
+        }
+        ]
+    }
+]}
+
+export const getPageFlowTestB = {
+    output: [
+    {
+        id: 1,
+        title: 'Flow 1',
+        description: 'A description of Flow 1',
+        user: 'User A',
+        steps: [
+        {
+            id: 1,
+            title: 'Title 1',
+            type: 'email',
+            description: 'A description about item 1',
+            route: '/a/a/1',
+            stage: {main: 'stage1', subStage: 1}
+        },
+        {
+            id: 2,
+            title: 'Title 2',
+            type: 'email',
+            description: 'A description about item 2',
+            route: '/b/b/2',
+            stage: {main: 'stage2', subStage: 2}
+        }
+        ]
+    },
+    {
+        id: 2,
+        title: 'Flow 2',
+        description: 'A description of Flow 2',
+        user: 'User B',
+        steps: [
+        {
+            id: 2,
+            title: 'Title 2',
+            type: 'email',
+            description: 'A description about item 2',
+            route: '/b/b/2',
+            stage: {main: 'stage2', subStage: 2}
+        },
+        {
+            id: 3,
+            title: 'Title 3',
+            type: 'email',
+            description: 'A description about item 3',
+            route: '/a/b/3'
+        }
+        ]
+    }
+]}

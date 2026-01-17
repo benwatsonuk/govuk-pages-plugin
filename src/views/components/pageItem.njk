@@ -1,0 +1,9 @@
+{% macro pageItem(params) %}
+
+    <div class="govuk-pages-plugin__page__item">
+        <a href="{{ params.page.route }}">
+        {{ params.page.title }}
+        </a>
+    </div>
+
+{% endmacro %}

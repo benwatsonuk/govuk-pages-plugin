@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Page Flows
+{% endblock %}
+
+{% block beforeContent %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back(-1);"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <div class="govuk-pages-plugin">
+        <h1 class="govuk-heading-l">Page Flows</h1>
+        {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+        {{ govukDetails({
+          summaryText: "What are 'Page Flows'?",
+          html: "<p>Page Flows are a way of tracking user journeys through a prototype. They help visualise end to end flows for a given user, so that we may see them from an elevated position without the need for creating additional documentation.</p>
+          <p class='govuk-body-s'> Note, the prototype might contain more user journeys than are listed here.</p>"
+        }) }} 
+
+        {% set items = [] %}
+        
+        {% for flow in flows %}
+          
+          {% set stepLinks = [] %}
+
+          {% for step in flow.steps %}
+            {% set stepLink = "<li><a href='" ~ step.route ~ "'>" ~ step.title ~ "</a></li>" %}
+            {% set stepLinks = (stepLinks.push(stepLink), stepLinks) %}
+          {% endfor %}
+    
+          {% set item = {
+            heading: {
+              text: flow.title
+            },
+            content: {
+              html: "<p class='govuk-body-s'>" ~ (flow.description | default('')) ~ "</p>
+              <ol class=''>" ~ (stepLinks | join(' ')) ~ "</p>"
+            }
+          } %}
+				  
+          {% set items = (items.push(item), items) %}
+          
+          {% endfor %}
+
+        {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+        
+        {{ govukAccordion({
+          id: "page-flows-accordion",
+          items: items
+        }) }}
+
+        <!-- <ul class="govuk-list govuk-list--number">
+          {% for flow in flows %}
+            <h2>{{ flow.title }}</h2>
+            {% if flow.description %}
+            <p class="govuk-body-s">{{ flow.description }}</p>
+            {% endif %}
+            <ol>
+            {% for step in flow.steps %}
+              <li><a href="{{ step.route }}">{{ step.title }}</a></li>
+            {% endfor %}
+            </ol>
+            <hr/>
+          {% endfor %}
+        </ul> -->
+      </div>
+
+{% endblock %}

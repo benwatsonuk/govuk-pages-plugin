@@ -5,7 +5,7 @@
     "properties": {
         "mode": {
             "type": "string",
-            "enum": ["pages", "stages"]
+            "enum": ["pages", "stages", "flows"]
         }
     },
     "allOf": [
@@ -13,8 +13,19 @@
             "if": {
                 "properties": { "mode": { "const": "pages" } }
             },
-            "then": { "$ref": "#/definitions/pages" },
-            "else": { "$ref": "#/definitions/stages" }
+            "then": { "$ref": "#/definitions/pages" }
+        },
+        {
+            "if": {
+                "properties": { "mode": { "const": "stages" } }
+            },
+            "then": { "$ref": "#/definitions/stages" }
+        },
+        {
+            "if": {
+                "properties": { "mode": { "const": "flows" } }
+            },
+            "then": { "$ref": "#/definitions/flows" }
         }
     ],
     "definitions": {
@@ -77,6 +88,40 @@
                                     },
                                     "additionalProperties": true
                                 }
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "flows": {
+            "type": "object",
+            "required": ["mode", "flows"],
+            "properties": {
+                "mode": { "const": "flows" },
+                "flows": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": ["id", "title", "steps"],
+                        "properties": {
+                            "id": { "type": "integer" },
+                            "title": { "type": "string" },
+                            "description": { "type": "string" },
+                            "user": { "type": "string" },
+                            "steps": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": ["pageId"],
+                                    "properties": {
+                                        "pageId": { "type": ["integer"] }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "additionalProperties": false
                             }
                         },
                         "additionalProperties": true

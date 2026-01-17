@@ -1,0 +1,11 @@
+.govuk-pages-plugin__overview-page {
+
+    &__feedback {
+        &--positive {
+            color: #00a33b;
+        }
+        &--negative {
+            color: #a33038;
+        }
+    }
+}
