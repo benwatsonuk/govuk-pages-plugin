@@ -1,4 +1,4 @@
-// Satrt Pages 
+// Start Pages 
 
 export interface Page {
   id: number
@@ -57,6 +57,31 @@ export interface PageFlow {
 }
 
 // End Page Flows
+
+// Start Outputs
+export interface StepOutput extends Page {
+  
+}
+
+export interface PageOutput extends Page {
+  
+}
+
+export interface StepGroup {
+  id: number,
+  stage: Stage,
+  steps: StepOutput[]
+}
+
+export interface PageFlowOutput {
+  id: number,
+  title: string,
+  description?: string,
+  user?: string,
+  steps: StepOutput[]
+  stepsWithStages?: StepGroup[]
+}
+// End Outputs
 
 export type StagesArray = Stage[];
 export type PagesArray = Page[];
