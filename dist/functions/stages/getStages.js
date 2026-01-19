@@ -1,7 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mapPagesToStages = exports.getStagesWithPages = exports.getStages = void 0;
+exports.mapPagesToStages = exports.getStageById = exports.getStagesWithPages = exports.getStages = exports.defaultStage = void 0;
 const validate_1 = require("../../validate");
+exports.defaultStage = {
+    id: 'unassigned',
+    title: 'Unassigned',
+    description: 'These pages have not been assigned a stage or sub-stage'
+};
 // Get and validate stages from the provided input
 const getStages = (stages) => {
     const validatedStages = (0, validate_1.validateStagesArray)(stages);
@@ -15,6 +20,10 @@ const getStagesWithPages = (stages, pages) => {
     return (0, exports.mapPagesToStages)(validatedStages, validatedPages);
 };
 exports.getStagesWithPages = getStagesWithPages;
+const getStageById = (stageId, stages) => {
+    return stages.find(stage => stage.id === stageId);
+};
+exports.getStageById = getStageById;
 // Below this point is just the helper function used internally for the above functions
 // This function does the heavy lifting of mapping pages to their relevant stages
 const mapPagesToStages = (stages, pages) => {
@@ -54,9 +63,9 @@ const mapPagesToStages = (stages, pages) => {
     // add allPages to a misc category and bolt on to stagesWithPages
     if (allPages.length > 0) {
         stagesWithPages.push({
-            id: "unassigned",
-            title: "Unassigned",
-            description: "Pages not assigned to any stage or sub-stage",
+            id: exports.defaultStage.id,
+            title: exports.defaultStage.title,
+            description: exports.defaultStage.description,
             pages: allPages
         });
     }

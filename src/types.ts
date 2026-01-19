@@ -52,13 +52,18 @@ export interface PageFlow {
   id: number
   title: string
   description?: string
-  user?: string | null
+  user?: string,
   steps: PageFlowStep[]
 }
 
 // End Page Flows
 
 // Start Outputs
+export interface FlowOutput {
+  hasStages: boolean,
+  flows: PageFlowOutput[]
+}
+
 export interface StepOutput extends Page {
   
 }

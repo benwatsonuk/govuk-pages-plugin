@@ -1,4 +1,7 @@
 .govuk-pages-plugin__flows {
+   &__flow {
+      display: block;
+  }
 
   &__item {
     display: inline-block;

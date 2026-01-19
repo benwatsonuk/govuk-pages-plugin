@@ -1,3 +1,3 @@
 "use strict";
-// Satrt Pages 
+// Start Pages 
 Object.defineProperty(exports, "__esModule", { value: true });

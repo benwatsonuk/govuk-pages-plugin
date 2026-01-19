@@ -198,224 +198,233 @@ export const getStagesWithPagesTestB = {
     ]
 }
 
-export const getPageFlowTestA : { output: PageFlowOutput[] } = {
-    output: [
-    {
-        id: 1,
-        title: 'Flow 1',
-        description: 'A description of Flow 1',
-        user: 'User A',
-        steps: [
-        {
-            id: 1,
-            title: 'Title 1',
-            type: 'email',
-            description: 'A description about item 1',
-            route: '/a/a/1',
-            stage: {main: 'stage1', subStage: 1}
-        },
-        {
-            id: 2,
-            title: 'Title 2',
-            type: 'email',
-            description: 'A description about item 2',
-            route: '/b/b/2',
-            stage: {main: 'stage2', subStage: 2}
-        }
-        ]
-    },
-    {
-        id: 2,
-        title: 'Flow 2',
-        description: 'A description of Flow 2',
-        user: 'User B',
-        steps: [
-        {
-            id: 2,
-            title: 'Title 2',
-            type: 'email',
-            description: 'A description about item 2',
-            route: '/b/b/2',
-            stage: {main: 'stage2', subStage: 2}
-        },
-        {
-            id: 3,
-            title: 'Title 3',
-            type: 'email',
-            description: 'A description about item 3',
-            route: '/a/b/3'
-        }
-        ]
-    }
-]}
-
-export const getPageFlowTestB : { output: PageFlowOutput[] } = {
-    output: [
-    {
-        id: 1,
-        title: 'Flow 1',
-        description: 'A description of Flow 1',
-        user: 'User A',
-        steps: [
-        {
-            id: 1,
-            title: 'Title 1',
-            type: 'email',
-            description: 'A description about item 1',
-            route: '/a/a/1',
-            stage: {main: 'stage1', subStage: 1}
-        },
-        {
-            id: 2,
-            title: 'Title 2',
-            type: 'email',
-            description: 'A description about item 2',
-            route: '/b/b/2',
-            stage: {main: 'stage2', subStage: 2}
-        }
-        ],
-        stepsWithStages: [
-        {
-            id: 1,
-            stage: {
-                id: 'stage1',
-                title: 'Stage 1',
-                description: 'A description about stage 1',
-                route: '/a',
-                subStages: [
-                    {
-                        id: 1,
-                        title: 'Sub-stage 1-1',
-                        description: 'A description about sub-stage 1-1',
-                        route: '/a/a'
-                    },
-                    {
-                        id: 2,
-                        title: 'Sub-stage 1-2',
-                        description: 'A description about sub-stage 1-2',
-                        route: '/a/b'
-                    }
-                ]
-            },
-            steps: [
+export const getPageFlowTestA : { output: { hasStages: boolean, flows: PageFlowOutput[] }} = {
+    output: {
+        hasStages: false, 
+        flows: [
             {
                 id: 1,
-                title: 'Title 1',
-                type: 'email',
-                description: 'A description about item 1',
-                route: '/a/a/1',
-                stage: {main: 'stage1', subStage: 1}
-            }
-            ]
-        },
-        {
-            id: 2,
-            stage: {
-                id: 'stage2',
-                title: 'Stage 2',
-                description: 'A description about stage 2',
-                route: '/b',
-                subStages: [
-                    {
-                        id: 1,
-                        title: 'Sub-stage 2-1',
-                        description: 'A description about sub-stage 2-1',
-                        route: '/b/a'
-                    },
-                    {
-                        id: 2,
-                        title: 'Sub-stage 2-2',
-                        description: 'A description about sub-stage 2-2',
-                        route: '/b/b'
-                    }
+                title: 'Flow 1',
+                description: 'A description of Flow 1',
+                user: 'User A',
+                steps: [
+                {
+                    id: 1,
+                    title: 'Title 1',
+                    type: 'email',
+                    description: 'A description about item 1',
+                    route: '/a/a/1',
+                    stage: {main: 'stage1', subStage: 1}
+                },
+                {
+                    id: 2,
+                    title: 'Title 2',
+                    type: 'email',
+                    description: 'A description about item 2',
+                    route: '/b/b/2',
+                    stage: {main: 'stage2', subStage: 2}
+                }
                 ]
             },
-            steps: [
             {
                 id: 2,
-                title: 'Title 2',
-                type: 'email',
-                description: 'A description about item 2',
-                route: '/b/b/2',
-                stage: {main: 'stage2', subStage: 2}
-            }
-            ]
-        }
-    ]
-    },
-    {
-        id: 2,
-        title: 'Flow 2',
-        description: 'A description of Flow 2',
-        user: 'User B',
-        steps: [
-        {
-            id: 2,
-            title: 'Title 2',
-            type: 'email',
-            description: 'A description about item 2',
-            route: '/b/b/2',
-            stage: {main: 'stage2', subStage: 2}
-        },
-        {
-            id: 3,
-            title: 'Title 3',
-            type: 'email',
-            description: 'A description about item 3',
-            route: '/a/b/3'
-        }
-        ],
-        stepsWithStages: [
-        {
-            id: 1,
-            stage: {
-                id: 'stage2',
-                title: 'Stage 2',
-                description: 'A description about stage 2',
-                route: '/b',
-                subStages: [
-                    {
-                        id: 1,
-                        title: 'Sub-stage 2-1',
-                        description: 'A description about sub-stage 2-1',
-                        route: '/b/a'
-                    },
-                    {
-                        id: 2,
-                        title: 'Sub-stage 2-2',
-                        description: 'A description about sub-stage 2-2',
-                        route: '/b/b'
-                    }
+                title: 'Flow 2',
+                description: 'A description of Flow 2',
+                user: 'User B',
+                steps: [
+                {
+                    id: 2,
+                    title: 'Title 2',
+                    type: 'email',
+                    description: 'A description about item 2',
+                    route: '/b/b/2',
+                    stage: {main: 'stage2', subStage: 2}
+                },
+                {
+                    id: 3,
+                    title: 'Title 3',
+                    type: 'email',
+                    description: 'A description about item 3',
+                    route: '/a/b/3'
+                }
                 ]
-            },
-            steps: [
-            {
-                id: 2,
-                title: 'Title 2',
-                type: 'email',
-                description: 'A description about item 2',
-                route: '/b/b/2',
-                stage: {main: 'stage2', subStage: 2}
             }
-            ]
-        },
-        {
-            id: 2,
-            stage: {
-                id: 'unassigned',
-                title: 'Unassigned',
-                description: 'These pages have not been assigned a stage or sub-stage'
-            },
-            steps: [
-            {
-                id: 3,
-                title: 'Title 3',
-                type: 'email',
-                description: 'A description about item 3',
-                route: '/a/b/3'
-            }
-            ]
-        }
         ]
     }
-]}
+}
+
+
+export const getPageFlowTestB : { output: { hasStages: boolean, flows: PageFlowOutput[] }} = {
+    output: {
+        hasStages: true, 
+        flows:[
+            {
+                id: 1,
+                title: 'Flow 1',
+                description: 'A description of Flow 1',
+                user: 'User A',
+                steps: [
+                {
+                    id: 1,
+                    title: 'Title 1',
+                    type: 'email',
+                    description: 'A description about item 1',
+                    route: '/a/a/1',
+                    stage: {main: 'stage1', subStage: 1}
+                },
+                {
+                    id: 2,
+                    title: 'Title 2',
+                    type: 'email',
+                    description: 'A description about item 2',
+                    route: '/b/b/2',
+                    stage: {main: 'stage2', subStage: 2}
+                }
+                ],
+                stepsWithStages: [
+                {
+                    id: 1,
+                    stage: {
+                        id: 'stage1',
+                        title: 'Stage 1',
+                        description: 'A description about stage 1',
+                        route: '/a',
+                        subStages: [
+                            {
+                                id: 1,
+                                title: 'Sub-stage 1-1',
+                                description: 'A description about sub-stage 1-1',
+                                route: '/a/a'
+                            },
+                            {
+                                id: 2,
+                                title: 'Sub-stage 1-2',
+                                description: 'A description about sub-stage 1-2',
+                                route: '/a/b'
+                            }
+                        ]
+                    },
+                    steps: [
+                    {
+                        id: 1,
+                        title: 'Title 1',
+                        type: 'email',
+                        description: 'A description about item 1',
+                        route: '/a/a/1',
+                        stage: {main: 'stage1', subStage: 1}
+                    }
+                    ]
+                },
+                {
+                    id: 2,
+                    stage: {
+                        id: 'stage2',
+                        title: 'Stage 2',
+                        description: 'A description about stage 2',
+                        route: '/b',
+                        subStages: [
+                            {
+                                id: 1,
+                                title: 'Sub-stage 2-1',
+                                description: 'A description about sub-stage 2-1',
+                                route: '/b/a'
+                            },
+                            {
+                                id: 2,
+                                title: 'Sub-stage 2-2',
+                                description: 'A description about sub-stage 2-2',
+                                route: '/b/b'
+                            }
+                        ]
+                    },
+                    steps: [
+                    {
+                        id: 2,
+                        title: 'Title 2',
+                        type: 'email',
+                        description: 'A description about item 2',
+                        route: '/b/b/2',
+                        stage: {main: 'stage2', subStage: 2}
+                    }
+                    ]
+                }
+            ]
+            },
+            {
+                id: 2,
+                title: 'Flow 2',
+                description: 'A description of Flow 2',
+                user: 'User B',
+                steps: [
+                {
+                    id: 2,
+                    title: 'Title 2',
+                    type: 'email',
+                    description: 'A description about item 2',
+                    route: '/b/b/2',
+                    stage: {main: 'stage2', subStage: 2}
+                },
+                {
+                    id: 3,
+                    title: 'Title 3',
+                    type: 'email',
+                    description: 'A description about item 3',
+                    route: '/a/b/3'
+                }
+                ],
+                stepsWithStages: [
+                {
+                    id: 1,
+                    stage: {
+                        id: 'stage2',
+                        title: 'Stage 2',
+                        description: 'A description about stage 2',
+                        route: '/b',
+                        subStages: [
+                            {
+                                id: 1,
+                                title: 'Sub-stage 2-1',
+                                description: 'A description about sub-stage 2-1',
+                                route: '/b/a'
+                            },
+                            {
+                                id: 2,
+                                title: 'Sub-stage 2-2',
+                                description: 'A description about sub-stage 2-2',
+                                route: '/b/b'
+                            }
+                        ]
+                    },
+                    steps: [
+                    {
+                        id: 2,
+                        title: 'Title 2',
+                        type: 'email',
+                        description: 'A description about item 2',
+                        route: '/b/b/2',
+                        stage: {main: 'stage2', subStage: 2}
+                    }
+                    ]
+                    },
+                    {
+                        id: 2,
+                        stage: {
+                            id: 'unassigned',
+                            title: 'Unassigned',
+                            description: 'These pages have not been assigned a stage or sub-stage'
+                        },
+                        steps: [
+                        {
+                            id: 3,
+                            title: 'Title 3',
+                            type: 'email',
+                            description: 'A description about item 3',
+                            route: '/a/b/3'
+                        }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

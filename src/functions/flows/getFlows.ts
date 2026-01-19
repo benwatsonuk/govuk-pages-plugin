@@ -1,22 +1,22 @@
-import { PageFlowArray, PagesArray, StagesArray, Stage, StepGroup, StepOutput } from "../../types"
+import { PageFlowArray, PagesArray, StagesArray, Stage, StepGroup, StepOutput, FlowOutput, PageFlowOutput } from "../../types"
 import { defaultStage, getStageById } from "../stages/getStages"
 import { validatePageFlowArray, validatePagesArray, validateStagesArray } from "../../validate"
 
-export const getFlows = (flows: PageFlowArray, pages: PagesArray, stages?: StagesArray) => {
+export const getFlows = (flows: PageFlowArray, pages: PagesArray, stages?: StagesArray): {hasStages: boolean, flows: PageFlowOutput[]} => {
   const validatedPageFlows = validatePageFlowArray(flows)
   const validatedPages = validatePagesArray(pages)
   if (stages) {
     const validatedStages = validateStagesArray(stages)
-    return mapPagesWithStagesToFlow(validatedPageFlows, validatedPages, validatedStages)
+    return { hasStages: true, flows: mapPagesWithStagesToFlow(validatedPageFlows, validatedPages, validatedStages)}
   }
-  return mapPagesToFlow(validatedPageFlows, validatedPages)
+  return { hasStages: false, flows: mapPagesToFlow(validatedPageFlows, validatedPages)}
 }
 
 // Get the pages from the flow data for the 'steps' property
-const mapPagesToFlow = (flows: PageFlowArray, pages: PagesArray) => {
-  const toReturn = []
+const mapPagesToFlow = (flows: PageFlowArray, pages: PagesArray): PageFlowOutput[] => {
+  const toReturn: PageFlowOutput[] = []
   for (const flow of flows) {
-    const mappedFlow = []
+    const mappedFlow: StepOutput[] = []
     for (const step of flow.steps) {
       const page = pages.find(p => p.id === step.pageId)
       if (page) {
@@ -29,7 +29,7 @@ const mapPagesToFlow = (flows: PageFlowArray, pages: PagesArray) => {
 }
 
 // Get the pages and stages from the flow data for the 'stepsWithSatges' property
-const mapPagesWithStagesToFlow = (flows: PageFlowArray, pages: PagesArray, stages: StagesArray) => {
+const mapPagesWithStagesToFlow = (flows: PageFlowArray, pages: PagesArray, stages: StagesArray): PageFlowOutput[] => {
   const toReturn = []
   for (const flow of flows) {
     const mappedFlow = []

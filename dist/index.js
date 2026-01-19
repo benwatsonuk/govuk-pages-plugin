@@ -38,7 +38,7 @@ exports.flowIndexData = flowIndexData;
 const flowIndex = (flows, pages, stages, pageType) => {
     pageType = pageType || "flow-index";
     return (req, res) => {
-        res.render(pageType, { flows: (0, exports.flowIndexData)(flows, pages, stages) });
+        res.render(pageType, { ...(0, exports.flowIndexData)(flows, pages, stages) });
     };
 };
 exports.flowIndex = flowIndex;
