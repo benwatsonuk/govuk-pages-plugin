@@ -83,7 +83,7 @@ export const getStagesWithPagesTestA = {
    {
         id: "unassigned",
         title: "Unassigned",
-        description: "Pages not assigned to any stage or sub-stage",
+        description: "These pages have not been assigned a stage or sub-stage",
         pages: [
             {
             id: 1,
@@ -184,7 +184,7 @@ export const getStagesWithPagesTestB = {
         {
             id: "unassigned",
             title: "Unassigned",
-            description: "Pages not assigned to any stage or sub-stage",
+            description: "These pages have not been assigned a stage or sub-stage",
             pages: [
                 {
                 id: 3,
@@ -278,14 +278,29 @@ export const getPageFlowTestB : { output: PageFlowOutput[] } = {
         {
             id: 1,
             stage: {
-                id: 'stepGroup1',
-                title: 'Step Group 1',
-                description: 'Step Group 1'
+                id: 'stage1',
+                title: 'Stage 1',
+                description: 'A description about stage 1',
+                route: '/a',
+                subStages: [
+                    {
+                        id: 1,
+                        title: 'Sub-stage 1-1',
+                        description: 'A description about sub-stage 1-1',
+                        route: '/a/a'
+                    },
+                    {
+                        id: 2,
+                        title: 'Sub-stage 1-2',
+                        description: 'A description about sub-stage 1-2',
+                        route: '/a/b'
+                    }
+                ]
             },
             steps: [
             {
                 id: 1,
-                title: 'Step Group 1',
+                title: 'Title 1',
                 type: 'email',
                 description: 'A description about item 1',
                 route: '/a/a/1',
@@ -296,9 +311,24 @@ export const getPageFlowTestB : { output: PageFlowOutput[] } = {
         {
             id: 2,
             stage: {
-                id: 'stepGroup2',
-                title: 'Step Group 2',
-                description: 'Description of the stage'
+                id: 'stage2',
+                title: 'Stage 2',
+                description: 'A description about stage 2',
+                route: '/b',
+                subStages: [
+                    {
+                        id: 1,
+                        title: 'Sub-stage 2-1',
+                        description: 'A description about sub-stage 2-1',
+                        route: '/b/a'
+                    },
+                    {
+                        id: 2,
+                        title: 'Sub-stage 2-2',
+                        description: 'A description about sub-stage 2-2',
+                        route: '/b/b'
+                    }
+                ]
             },
             steps: [
             {
@@ -339,9 +369,24 @@ export const getPageFlowTestB : { output: PageFlowOutput[] } = {
         {
             id: 1,
             stage: {
-                id: 'stepGroup1',
-                title: 'Step Group 1',
-                description: 'Description of the flow'
+                id: 'stage2',
+                title: 'Stage 2',
+                description: 'A description about stage 2',
+                route: '/b',
+                subStages: [
+                    {
+                        id: 1,
+                        title: 'Sub-stage 2-1',
+                        description: 'A description about sub-stage 2-1',
+                        route: '/b/a'
+                    },
+                    {
+                        id: 2,
+                        title: 'Sub-stage 2-2',
+                        description: 'A description about sub-stage 2-2',
+                        route: '/b/b'
+                    }
+                ]
             },
             steps: [
             {
@@ -357,9 +402,9 @@ export const getPageFlowTestB : { output: PageFlowOutput[] } = {
         {
             id: 2,
             stage: {
-                id: 'stepGroup2',
-                title: 'Step Group 2',
-                description: 'Description of the flow'
+                id: 'unassigned',
+                title: 'Unassigned',
+                description: 'These pages have not been assigned a stage or sub-stage'
             },
             steps: [
             {

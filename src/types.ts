@@ -28,14 +28,14 @@ export interface Stage {
   id: string
   title: string
   route?: string
-  description: string | null
+  description?: string
   subStages?: SubStage[]
 }
 
 export interface StageWithPages {
   id: string
   title: string
-  description: string | null
+  description?: string
   subStages?: SubStageWithPages[]
   pages: Page[]
 }
@@ -51,7 +51,7 @@ export interface PageFlowStep {
 export interface PageFlow {
   id: number
   title: string
-  description?: string | null
+  description?: string
   user?: string | null
   steps: PageFlowStep[]
 }
