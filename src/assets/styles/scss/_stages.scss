@@ -1,7 +1,36 @@
 .govuk-pages-plugin__stages {
 
   &__item {
-    border-top: 10px solid;
+    border-top:4px solid;
+    .govuk-pages-plugin__flows__flow {
+      display: flex;
+      column-gap: govuk-spacing(1);
+    }
+    &:last-of-type {
+      .govuk-pages-plugin__flows__item {
+        &:last-of-type {
+          &:before, .govuk-pages-plugin__flows__connector {
+            display: none;
+          }
+        }
+      }
+    }
+    &:nth-child(odd) {
+      .govuk-pages-plugin__stages__item__title {
+        background: rgba($govuk-link-colour, 0.2);
+      }
+    }
+    &:nth-child(even) {
+      .govuk-pages-plugin__stages__item__title {
+        background: rgba($govuk-link-visited-colour, 0.2);
+      }
+    }
+    &__title {
+      @include govuk-font($size: 14);
+      @include govuk-responsive-padding(1);
+      @include govuk-responsive-margin(0, "top");
+      @include govuk-responsive-margin(3, "bottom");
+    }
     &__description {
       padding: 2px 10px;
       display: block;
