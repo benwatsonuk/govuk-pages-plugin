@@ -1,14 +1,21 @@
 <p>Has stages</p>
 
+<!-- {{ flows | dump }} -->
+
 {% set items = [] %}
 
 {% for flow in flows %}
     
-    {% set stepLinks = [] %}
+    {% set stageLinks = [] %}
 
-    {% for step in flow.steps %}
-    {% set stepLink = "<li><a href='" ~ step.route ~ "'>" ~ step.title ~ "</a></li>" %}
-    {% set stepLinks = (stepLinks.push(stepLink), stepLinks) %}
+    {% for stage in flow.stepsWithStages %}
+        {% set stepLinks = [] %}
+        {% for step in stage.steps %}
+            {% set stepLink = "<li class='govuk-pages-plugin__flows__item'>" ~ step.title ~ "</li>" %}
+            {% set stepLinks = (stepLinks.push(stepLink), stepLinks) %}
+        {% endfor %}
+    {% set stageLink = "<li class='govuk-pages-plugin__flows__stage'><h2 class='govuk-pages-plugin__flows__stage__title'>" ~ stage.stage.title ~ "</h2><ol>" ~ (stepLinks | join(' ')) ~ "</ol></li>" %}
+    {% set stageLinks = (stageLinks.push(stageLink), stageLinks) %}
     {% endfor %}
 
     {% set item = {
@@ -17,10 +24,16 @@
     },
     content: {
         html: "<p class='govuk-body-s'>" ~ (flow.description | default('')) ~ "</p>
-        <ol class='govuk-pages-plugin__flows__flow'>" ~ (stepLinks | join(' ')) ~ "</p>"
+        <ol class='govuk-pages-plugin__flows__flow govuk-pages-plugin__flows__flow--with-stages'>" ~ (stageLinks | join(' ')) ~ "</p>"
     }
     } %}
             
     {% set items = (items.push(item), items) %}
     
 {% endfor %}
+
+
+    {{ govukAccordion({
+        id: "page-flows-accordion",
+        items: items
+    }) }}

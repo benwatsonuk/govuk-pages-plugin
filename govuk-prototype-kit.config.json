@@ -6,6 +6,9 @@
   "assets": [
     "/dist/assets"
   ],
+  "scripts": [
+    "/dist/assets/javascripts/all.js"
+  ],
   "sass": [
     "/dist/assets/styles/all.scss"
   ]

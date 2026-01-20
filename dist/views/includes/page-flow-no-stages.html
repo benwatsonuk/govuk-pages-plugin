@@ -24,3 +24,8 @@
     {% set items = (items.push(item), items) %}
     
 {% endfor %}
+
+    {{ govukAccordion({
+        id: "page-flows-accordion",
+        items: items
+    }) }}
