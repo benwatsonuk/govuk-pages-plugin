@@ -5,8 +5,25 @@
     display: block;
     &--with-stages {
       display: flex;
-      column-gap: govuk-spacing(1)
+      column-gap: govuk-spacing(1);
+      overflow-x: scroll;
     }
+    &--list {
+      .govuk-pages-plugin__flows__steps {
+        
+      }
+      .govuk-pages-plugin__flows__items, .govuk-pages-plugin__flows__step {
+        width: auto;
+      }
+      .govuk-pages-plugin__flows__connector {
+        display: none;
+      }
+    }
+  }
+
+  &__steps {
+    display: flex;
+    column-gap: govuk-spacing(1);
   }
 
   &__connector {
