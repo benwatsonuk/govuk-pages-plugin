@@ -7,7 +7,7 @@
     {% set stepLinks = [] %}
 
     {% for step in flow.steps %}
-    {% set stepLink = "<li><a href='" ~ step.route ~ "'>" ~ step.title ~ "</a></li>" %}
+    {% set stepLink = "<li>" ~ govukPagesPluginStep(step) ~ "</li>" %}
     {% set stepLinks = (stepLinks.push(stepLink), stepLinks) %}
     {% endfor %}
 

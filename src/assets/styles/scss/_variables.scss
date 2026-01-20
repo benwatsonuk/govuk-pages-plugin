@@ -1,6 +1,6 @@
 // Assets - these can all be overridden
 $page-flow-assets: '/plugin-assets/%40benwatsonuk%2Fgovuk-pages-plugin/dist/assets/';
-$page-flow-images: $page-flow-assets + 'images';
+$page-flow-images: $page-flow-assets + 'images/';
 $icons: $page-flow-images + 'page-types';
 
 // Stock colours for stages
