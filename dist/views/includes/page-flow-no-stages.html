@@ -1,0 +1,29 @@
+{% set items = [] %}
+
+{% for flow in flows %}
+    
+    {% set stepLinks = [] %}
+
+    {% for step in flow.steps %}
+    {% set stepLink = "<li class='govuk-pages-plugin__flows__item'>" ~ govukPagesPluginStep(step) ~ "</li>" %}
+    {% set stepLinks = (stepLinks.push(stepLink), stepLinks) %}
+    {% endfor %}
+
+    {% set item = {
+    heading: {
+        text: flow.title
+    },
+    content: {
+        html: "<p class='govuk-body-s'>" ~ (flow.description | default('')) ~ "</p>
+        <ol class='govuk-pages-plugin__flows__flow'>" ~ (stepLinks | join(' ')) ~ "</p>"
+    }
+    } %}
+            
+    {% set items = (items.push(item), items) %}
+    
+{% endfor %}
+
+    {{ govukAccordion({
+        id: "page-flows-accordion",
+        items: items
+    }) }}

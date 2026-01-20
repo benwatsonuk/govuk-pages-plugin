@@ -1,0 +1,9 @@
+{% macro govukPagesPluginStep(step) %}
+    <div class="govuk-pages-plugin__flows__step">
+    <a href="{{ step.route }}" class="govuk-pages-plugin__flows__step">
+        <div class="govuk-pages-plugin__screen-icon {% if step.type %}govuk-pages-plugin__screen-icon--{{ step.type }}{% endif%}"></div>
+        {{ step.title }}
+    </a>
+    <div class="govuk-pages-plugin__flows__connector"></div>
+</div>
+{% endmacro %}

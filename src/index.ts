@@ -38,7 +38,7 @@ export const flowIndexData = (flows: PageFlowArray, pages: PagesArray, stages?: 
 export const flowIndex = (flows: PageFlowArray, pages: PagesArray, stages?: StagesArray, pageType?: string) => {
   pageType = pageType || "flow-index"
   return (req: any, res: any) => {
-    res.render(pageType, { flows: flowIndexData(flows, pages, stages) })
+    res.render(pageType, { ...flowIndexData(flows, pages, stages) })
   }
 }
 

@@ -1,47 +1,72 @@
 .govuk-pages-plugin__screen-icon {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 64px;
+    overflow: hidden;
+    opacity: 0.7;
+    transition: all 0.2s;
+    @include govuk-responsive-margin(2, "bottom");
     display: block;
-    background-repeat: no-repeat;
-   
+    border: 1px solid $govuk-border-colour;
+    border-radius: 3px;
+    &:before {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 13px;
+        background-image: url($icons + '/header.svg');
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: cover;
+    }
+
     &--email {
         background-image: url($icons + '/email.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
-    &--text-input {
+    &--text-input, &--question  {
         background-image: url($icons + '/text-input.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
-    &--dashboard, &--content-page {
+    &--dashboard, &--content-page, &--content {
         background-image: url($icons + '/content-page.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
-    &--radio-input {
+    &--radio-input, &--radios {
         background-image: url($icons + '/radio-input.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
-    &--checkbox-input {
+    &--checkbox-input{
         background-image: url($icons + '/checkbox-input.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
     &--check-answers {
         background-image: url($icons + '/check-answers.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
     &--confirmation {
         background-image: url($icons + '/confirmation.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
     &--task-list {
         background-image: url($icons + '/task-list.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
     &--start-page {
         background-image: url($icons + '/start-page.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
     &--checkbox-page {
         background-image: url($icons + '/checkbox-page.svg');
+        background-position: 0 2px;
         background-size: contain;
     }
 }

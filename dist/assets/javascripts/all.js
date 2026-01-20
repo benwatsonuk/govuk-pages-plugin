@@ -1,1 +1,1 @@
-console.log("Page Flow Plugin loaded");
+console.log("GOVUK Pages Plugin loaded");

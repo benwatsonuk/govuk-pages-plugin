@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.0
+
+### Features
+- Visual user flows added
+- 'Omni-page' added, users can call a single page to their prototype and have all available options rendered to a single route/URL
+
 ## v1.1.1
 
 ### Fixes

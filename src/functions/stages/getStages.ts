@@ -1,5 +1,11 @@
-import { PagesArray, StagesArray, StagesWithPagesArray } from "../../types"
+import { PagesArray, StagesArray, StagesWithPagesArray, Stage } from "../../types"
 import { validatePagesArray, validateStagesArray } from "../../validate"
+
+export const defaultStage = {
+  id: 'unassigned',
+  title: 'Unassigned',
+  description: 'These pages have not been assigned a stage or sub-stage'
+}
 
 // Get and validate stages from the provided input
 export const getStages = (stages: StagesArray) => {
@@ -12,6 +18,10 @@ export const getStagesWithPages = (stages: StagesArray, pages: PagesArray): Stag
   const validatedStages = validateStagesArray(stages)
   const validatedPages = validatePagesArray(pages)
   return mapPagesToStages(validatedStages, validatedPages)
+}
+
+export const getStageById = (stageId: string, stages: StagesArray) => {
+  return stages.find(stage => stage.id === stageId)
 }
 
 // Below this point is just the helper function used internally for the above functions
@@ -68,9 +78,9 @@ export const mapPagesToStages = (
   // add allPages to a misc category and bolt on to stagesWithPages
   if (allPages.length > 0) {
     stagesWithPages.push({
-      id: "unassigned",
-      title: "Unassigned",
-      description: "Pages not assigned to any stage or sub-stage",
+      id: defaultStage.id,
+      title: defaultStage.title,
+      description: defaultStage.description,
       pages: allPages
     })
   }

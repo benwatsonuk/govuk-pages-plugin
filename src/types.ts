@@ -1,4 +1,4 @@
-// Satrt Pages 
+// Start Pages 
 
 export interface Page {
   id: number
@@ -28,14 +28,14 @@ export interface Stage {
   id: string
   title: string
   route?: string
-  description: string | null
+  description?: string
   subStages?: SubStage[]
 }
 
 export interface StageWithPages {
   id: string
   title: string
-  description: string | null
+  description?: string
   subStages?: SubStageWithPages[]
   pages: Page[]
 }
@@ -51,12 +51,42 @@ export interface PageFlowStep {
 export interface PageFlow {
   id: number
   title: string
-  description?: string | null
-  user?: string | null
+  description?: string
+  user?: string,
   steps: PageFlowStep[]
 }
 
 // End Page Flows
+
+// Start Outputs
+export interface FlowOutput {
+  hasStages: boolean,
+  flows: PageFlowOutput[]
+}
+
+export interface StepOutput extends Page {
+  
+}
+
+export interface PageOutput extends Page {
+  
+}
+
+export interface StepGroup {
+  id: number,
+  stage: Stage,
+  steps: StepOutput[]
+}
+
+export interface PageFlowOutput {
+  id: number,
+  title: string,
+  description?: string,
+  user?: string,
+  steps: StepOutput[]
+  stepsWithStages?: StepGroup[]
+}
+// End Outputs
 
 export type StagesArray = Stage[];
 export type PagesArray = Page[];

@@ -1,22 +1,108 @@
 .govuk-pages-plugin__flows {
+  &__flow {
+    padding: 0;
+    list-style: none;
+    display: block;
+    &--with-stages {
+      display: flex;
+      column-gap: govuk-spacing(1);
+      overflow-x: scroll;
+    }
+    &--list {
+      .govuk-pages-plugin__flows__steps {
+        
+      }
+      .govuk-pages-plugin__flows__items, .govuk-pages-plugin__flows__step {
+        width: auto;
+      }
+      .govuk-pages-plugin__flows__connector {
+        display: none;
+      }
+    }
+  }
 
-  &__item {
-    display: inline-block;
-    font-size: 14px;
-    width: 170px;
-    //min-height: 200px;
-    vertical-align: top;
-    position: relative;
+  &__steps {
+    display: flex;
+    column-gap: govuk-spacing(1);
+  }
 
+  &__connector {
+    display: block;
+    position: absolute;
+    opacity: 0.5;
+    right: 0;
+    top: 35px;
+    height: 2px;
+    width: calc(100% - 87px);
+    background-color: $govuk-link-colour;
     &:before {
       content: "";
+      left: -10px;
+      top: -4px;
       position: absolute;
-      background: url($page-flow-images + '/arrow.svg') no-repeat;
-      background-size: contain;
-      width: 78px;
-      left: 92px;
-      height: 20px;
-      top: 35px;
+      height: 10px;
+      width: 10px;
+      background: url($page-flow-images + '/arrow-base.svg') no-repeat;
+      background-size: contain;    
+    }
+    &:after {
+      content: "";
+      right: -5px;
+      top: -4px;
+      position: absolute;
+      height: 10px;
+      width: 10px;
+      background: url($page-flow-images + '/arrow-head.svg') no-repeat;
+      background-size: contain;    
+    }
+  }
+
+  &__stage {
+      &__title {
+        @extend .govuk-body-s;
+      }
+      ol {
+        display: flex;
+        padding: 0;
+        column-gap: govuk-spacing(1);
+      }
+  }
+
+  &__item, &__step {
+    display: inline-block;
+    @include govuk-font($size: 14);
+    width: 170px;
+    vertical-align: top;
+    position: relative;
+    transition: all 0.2s;
+
+    &:hover, &focus {
+      .govuk-pages-plugin__screen-icon {
+        opacity: 1;
+      }
+    }
+
+    // &:before {
+    //   content: "";
+    //   position: absolute;
+    //   background: url($page-flow-images + '/arrow.svg') no-repeat;
+    //   background-size: contain;
+    //   width: 50px;
+    //   height: 10px;
+    //   top: 30px;
+    //   right: 30px;
+    // }
+  }
+
+  &__stage {
+    &:last-of-type {
+      .govuk-pages-plugin__flows__item {
+        &:last-of-type {
+          &:before, .govuk-pages-plugin__flows__connector {
+            display: none;
+          }
+        }
+      }
     }
   }
 
