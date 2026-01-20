@@ -14,7 +14,7 @@
             {% set stepLink = "<li class='govuk-pages-plugin__flows__item'>" ~ govukPagesPluginStep(step) ~ "</li>" %}
             {% set stepLinks = (stepLinks.push(stepLink), stepLinks) %}
         {% endfor %}
-    {% set stageLink = "<li class='govuk-pages-plugin__flows__stage'><h2 class='govuk-pages-plugin__flows__stage__title'>" ~ stage.stage.title ~ "</h2><ol>" ~ (stepLinks | join(' ')) ~ "</ol></li>" %}
+    {% set stageLink = "<li class='govuk-pages-plugin__flows__stage'><h2 class='govuk-pages-plugin__flows__stage__title'>" ~ stage.stage.title ~ "</h2><ol class='govuk-pages-plugin__flows__flow'>" ~ (stepLinks | join(' ')) ~ "</ol></li>" %}
     {% set stageLinks = (stageLinks.push(stageLink), stageLinks) %}
     {% endfor %}
 
