@@ -8,20 +8,49 @@
       column-gap: govuk-spacing(1);
       overflow-x: scroll;
     }
+    &--full-width {
+      overflow-x: visible;
+    }
     &--list {
-      .govuk-pages-plugin__flows__steps {
-        
+      display: block;
+      overflow: visible;
+      .govuk-pages-plugin__stages__item:first-of-type {
+        .govuk-pages-plugin__flows__item:first-of-type {
+          .govuk-pages-plugin__flows__connector {
+            height: 36px;
+            top: 18px;
+          }
+        } 
       }
-      .govuk-pages-plugin__flows__items, .govuk-pages-plugin__flows__step {
+      .govuk-pages-plugin__stages__item {
+        border: none;
+        .govuk-pages-plugin__stages__item__title {
+          display: none;
+        }
+      }
+      .govuk-pages-plugin__flows__steps {
+        display: block;
+      }
+      .govuk-pages-plugin__flows__item {
+        width: 100%;
+        @include govuk-responsive-margin(2, "bottom");
+      }
+      .govuk-pages-plugin__flows__step {
         width: auto;
+        display: flex;
+        align-items: center;
+      }
+      .govuk-pages-plugin__screen-icon {
+        @extend .govuk-pages-plugin__screen-icon--sm;
       }
       .govuk-pages-plugin__flows__connector {
-        display: none;
+        @extend .govuk-pages-plugin__flows__connector--vertical
       }
     }
   }
 
   &__steps {
+    padding: 0;
     display: flex;
     column-gap: govuk-spacing(1);
   }
@@ -54,6 +83,39 @@
       width: 10px;
       background: url($page-flow-images + '/arrow-head.svg') no-repeat;
       background-size: contain;    
+    }
+
+    &--vertical {
+      border: 1px dashed $govuk-link-colour;
+      background-color: transparent;
+      border-right: none;
+      height: 30px;
+      width: 12px;
+      left: -12px;
+      top: 24px;
+
+      &:before {
+        content: "";
+        left: unset;
+        right: -2px;
+        top: -4px;
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        background: url($page-flow-images + '/arrow-base.svg') no-repeat;
+        background-size: contain;    
+      }
+      &:after {
+        content: "";
+        right: 0;
+        top: unset;
+        bottom: -3px;
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        background: url($page-flow-images + '/arrow-head.svg') no-repeat;
+        background-size: contain;    
+      }
     }
   }
 
@@ -105,5 +167,4 @@
       }
     }
   }
-
 }

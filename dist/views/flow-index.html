@@ -16,14 +16,72 @@
 {% block content %}
 
       <div class="govuk-pages-plugin">
-        <h1 class="govuk-heading-l">Page Flows</h1>
+        <div class="govuk-pages-plugin__page-options__header">
+          <h1 class="govuk-heading-l">Page Flows</h1>
+        </div>
+        <div class="govuk-pages-plugin__page-options__trigger">
+          <ic-switch id="showPageOptions" label="Show page options" checked="false" size=""></ic-switch>
+        </div>
         {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+        <div class="govuk-pages-plugin__page-options govuk-visually-hidden">
+          <h2 class="govuk-heading-s">Page options</h2>
+          <div class="govuk-pages-plugin__page-options__container">
+            <ic-switch id="showStages" label="Show stages in flows" checked="true" size="small" helper-text="Toggle between the pages grouped within stages or as a 'flat' flow"></ic-switch>
+            <ic-switch id="showFullWidth" label="Show full width" checked="false" size="small" helper-text="Allow large flows to extend beyond edge of screen"></ic-switch>
+
+            <script>
+              const switchEl = document.querySelectorAll('ic-switch');
+              switchEl.forEach( el => { addEventListener('icChange', (ev) => {
+                if (ev.srcElement.id === 'showStages') {
+                  const target = document.querySelectorAll(".govuk-pages-plugin__flows__flow--with-stages");
+                  const classToUse = 'govuk-pages-plugin__flows__flow--list'
+                  if (ev.detail.checked === true) {
+                    target.forEach(a => {
+                      a.classList.remove(classToUse)
+                    })  
+                  } else {
+                    target.forEach(a => {
+                      a.classList.add(classToUse)
+                    })  
+                  }
+                } else if (ev.srcElement.id === 'showPageOptions') {
+                  const target = document.querySelectorAll(".govuk-pages-plugin__page-options");
+                  const classToUse = 'govuk-visually-hidden'
+                  if (ev.detail.checked === true) {
+                    target.forEach(a => {
+                      a.classList.remove(classToUse)
+                    })  
+                  } else {
+                    target.forEach(a => {
+                      a.classList.add(classToUse)
+                    })  
+                  }
+                } else if (ev.srcElement.id === 'showFullWidth') {
+                  const target = document.querySelectorAll(".govuk-pages-plugin__flows__flow");
+                  const classToUse = 'govuk-pages-plugin__flows__flow--full-width'
+                  if (ev.detail.checked === true) {
+                    target.forEach(a => {
+                      a.classList.add(classToUse)
+                    })  
+                  } else {
+                    target.forEach(a => {
+                      a.classList.remove(classToUse)
+                    })  
+                  }
+                }
+              })
+            })
+            </script>
+          </div>
+        </div>
 
         {{ govukDetails({
           summaryText: "What are 'Page Flows'?",
           html: "<p>Page Flows are a way of tracking user journeys through a prototype. They help visualise end to end flows for a given user, so that we may see them from an elevated position without the need for creating additional documentation.</p>
           <p class='govuk-body-s'> Note, the prototype might contain more user journeys than are listed here.</p>"
         }) }} 
+
         {% from "./components/step.njk" import govukPagesPluginStep %}
         {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
         <div class="govuk-pages-plugin__flows">

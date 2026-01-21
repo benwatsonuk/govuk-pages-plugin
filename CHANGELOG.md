@@ -1,10 +1,15 @@
 # Changelog
 
+## v1.2.1
+
+### Features
+- User can switch between flows and lists on the 'Page Flows' view
+- Added (embedded v3.17.0) UKIC (UK Intelligence Community) Components to allow for some rich UI elements to use exclusively with the plugin i.e. these are not exposed or intended to be used as part of designs for end users.
+
 ## v1.2.0
 
 ### Features
 - Visual user flows added
-- 'Omni-page' added, users can call a single page to their prototype and have all available options rendered to a single route/URL
 
 ## v1.1.1
 

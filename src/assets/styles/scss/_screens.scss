@@ -3,11 +3,12 @@
     height: 64px;
     overflow: hidden;
     opacity: 0.7;
-    transition: all 0.2s;
+    transition: opacity 0.2s ease-in-out;
     @include govuk-responsive-margin(2, "bottom");
     display: block;
     border: 1px solid $govuk-border-colour;
     border-radius: 3px;
+
     &:before {
         content: "";
         display: block;
@@ -17,6 +18,25 @@
         background-repeat: no-repeat;
         background-position: top left;
         background-size: cover;
+    }
+
+    &--sm {
+        width: 40px;
+        height: 32px;
+        border-radius: 2px;
+        @include govuk-responsive-margin(0, "bottom");
+        @include govuk-responsive-margin(2, "right");
+
+        &:before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 6px;
+            background-image: url($icons + '/header.svg');
+            background-repeat: no-repeat;
+            background-position: top left;
+            background-size: cover;
+        }
     }
 
     &--email {
