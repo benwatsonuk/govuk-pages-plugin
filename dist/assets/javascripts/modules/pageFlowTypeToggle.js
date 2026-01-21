@@ -1,5 +1,5 @@
 export const PageFlowTypeToggle = () => {
-    console.log('The type toggle is firing')
+    console.log('The type toggle is being called')
 }
 
 export const InitPageFlowTypeToggles = () => {

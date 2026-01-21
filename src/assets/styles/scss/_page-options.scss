@@ -1,0 +1,13 @@
+.govuk-pages-plugin__page-options {
+    @extend .govuk-inset-text;
+   
+    &__container {
+        display: flex;
+        @include govuk-responsive-margin(6, "bottom");
+    }
+
+    &__item {
+        
+    }
+  
+}
