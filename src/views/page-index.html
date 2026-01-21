@@ -1,16 +1,7 @@
-{% extends "layouts/main.html" %}
+{% extends "./layouts/govuk-pages-plugin.html" %}
 
 {% block pageTitle %}
   Page Index
-{% endblock %}
-
-{% block beforeContent %}
-  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.back(-1);"
-  }) }}
 {% endblock %}
 
 {% block content %}

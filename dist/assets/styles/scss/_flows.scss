@@ -8,6 +8,11 @@
       column-gap: govuk-spacing(1);
       overflow-x: scroll;
     }
+    &--inline {
+      display: flex;
+      column-gap: govuk-spacing(1);
+      overflow-x: scroll;
+    }
     &--full-width {
       overflow-x: visible;
     }
@@ -166,5 +171,17 @@
         }
       }
     }
+  }
+
+  &__flow {
+    &:not(:has(.govuk-pages-plugin__stages__item)) {
+        .govuk-pages-plugin__flows__item {
+          &:last-of-type {
+            &:before, .govuk-pages-plugin__flows__connector {
+              display: none;
+            }
+          }
+        }
+      }
   }
 }
