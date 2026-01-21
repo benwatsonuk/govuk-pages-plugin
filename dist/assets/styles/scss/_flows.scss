@@ -8,6 +8,9 @@
       column-gap: govuk-spacing(1);
       overflow-x: scroll;
     }
+    &--full-width {
+      overflow-x: visible;
+    }
     &--list {
       display: block;
       overflow: visible;
