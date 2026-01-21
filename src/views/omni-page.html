@@ -7,37 +7,38 @@
 {% block content %}
 
       <div class="govuk-pages-plugin">
-        <h1 class="govuk-heading-l">Pages</h1>
-        {% from "govuk/components/details/macro.njk" import govukDetails %}
+        <ic-theme theme="light">
+          <h1 class="govuk-heading-l">Pages</h1>
+          {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-        <!-- {{ govukDetails({
-          summaryText: "What is the 'Stage Index'?",
-          html: "<p>This page contains links to tracked pages in this prototype, these pages are grouped by the 'stages' that they are assigned to. It is useful for navigating the prototype without having to go through flows.</p><p>'Stages' are defined by the plugin user but can be throught about as logical groups of pages that work to achieve a common goal, such as 'authenticating' or 'registering'.</p><p class='govuk-body-s'> Note, the prototype might contain more pages than are listed here.</p>"
-        }) }}  -->
+          <!-- {{ govukDetails({
+            summaryText: "What is the 'Stage Index'?",
+            html: "<p>This page contains links to tracked pages in this prototype, these pages are grouped by the 'stages' that they are assigned to. It is useful for navigating the prototype without having to go through flows.</p><p>'Stages' are defined by the plugin user but can be throught about as logical groups of pages that work to achieve a common goal, such as 'authenticating' or 'registering'.</p><p class='govuk-body-s'> Note, the prototype might contain more pages than are listed here.</p>"
+          }) }}  -->
 
-        {% set tabItems = [] %}
+          {% set tabItems = [] %}
 
-        {% set pagesHtml %}
-          {% include "./includes/pages.html" %}
-        {% endset %}
+          {% set pagesHtml %}
+            {% include "./includes/pages.html" %}
+          {% endset %}
 
-        <!-- Page index HAS to exist i.e. pages are the minimum that can be supplied -->
-        {% set tabItem = {
-            label: "Page Index",
-            id: "pages",
-            panel: {
-              html: pagesHtml
+          <!-- Page index HAS to exist i.e. pages are the minimum that can be supplied -->
+          {% set tabItem = {
+              label: "Page Index",
+              id: "pages",
+              panel: {
+                html: pagesHtml
+              }
             }
-          }
-         %}
+          %}
 
-        {% set tabItems = (tabItems.push(tabItem), tabItems) %}
-       
-        {{ govukTabs({
-          items: tabItems
-        }) }}
+          {% set tabItems = (tabItems.push(tabItem), tabItems) %}
+        
+          {{ govukTabs({
+            items: tabItems
+          }) }}
 
-
+        </ic-theme>
       </div>
 
 {% endblock %}
