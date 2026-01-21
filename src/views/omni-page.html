@@ -22,8 +22,16 @@
             {% include "./includes/pages.html" %}
           {% endset %}
 
+          {% set flowsHtml %}
+            {% include "./includes/flows.html" %}
+          {% endset %}
+
+          {% set stagesHtml %}
+            {% include "./includes/stages.html" %}
+          {% endset %}
+
           <!-- Page index HAS to exist i.e. pages are the minimum that can be supplied -->
-          {% set tabItem = {
+          {% set pagesItem = {
               label: "Page Index",
               id: "pages",
               panel: {
@@ -32,8 +40,34 @@
             }
           %}
 
-          {% set tabItems = (tabItems.push(tabItem), tabItems) %}
+          {% set tabItems = (tabItems.push(pagesItem), tabItems) %}
         
+          {% if flows %}
+            {% set flowsItem = {
+                label: "Flow Index",
+                id: "flows",
+                panel: {
+                  html: flowsHtml
+                }
+              }
+            %}
+
+          {% set tabItems = (tabItems.push(flowsItem), tabItems) %}
+          {% endif %}
+
+          {% if stages %}
+            {% set stagesItem = {
+                label: "Stage Index",
+                id: "stages",
+                panel: {
+                  html: stagesHtml
+                }
+              }
+            %}
+
+          {% set tabItems = (tabItems.push(stagesItem), tabItems) %}
+          {% endif %}
+
           {{ govukTabs({
             items: tabItems
           }) }}

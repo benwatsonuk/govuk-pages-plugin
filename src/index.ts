@@ -8,8 +8,22 @@ import { PagesArray, StagesArray, PageFlowArray } from "./types"
 
 // Omni page (all available views in tabs)
 export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray) => {
-  return (req: any, res: any) => {
-    res.render("omni-page", { pages: pages })
+  if (stages && flows) {
+    return (req: any, res: any) => {
+      res.render("omni-page", { pages: pageIndexData(pages), stages: stageIndexData(stages, pages), flows: flowIndexData(flows, pages, stages) })
+    }
+  } else if (stages) {
+    return (req: any, res: any) => {
+      res.render("omni-page", { pages: pageIndexData(pages), stages: stageIndexData(stages, pages) })
+    }
+  } else if (flows) {
+    return (req: any, res: any) => {
+      res.render("omni-page", { pages: pageIndexData(pages), flows: flowIndexData(flows, pages) })
+    }
+  } else {
+    return (req: any, res: any) => {
+      res.render("omni-page", { pages: pageIndexData(pages) })
+    }
   }
 }
 
@@ -53,10 +67,10 @@ export const flowIndex = (flows: PageFlowArray, pages: PagesArray, stages?: Stag
 
 /*--- THE MAIN USER ROUTES ---*/
 
-export const govukPagesPlugin = (pages: PagesArray, stages?: StagesArray, pageType?: string) => {
+export const govukPagesPlugin = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray, pageType?: string) => {
   pageType = pageType || "page-index" // Options can be 'all', 'page-index', 'stage-index' - in future could be 'user-flow-index', etc
   const router = Router()
   // This is the default offering from the plugin - it is expected that must users will use this. It should be robust
-  router.get("/", omniPage(pageIndexData(pages)))
+  router.get("/", omniPage(pages, stages, flows))
   return router
 } 
