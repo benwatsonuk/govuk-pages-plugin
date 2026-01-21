@@ -19,7 +19,7 @@
         text: flow.title
     },
     content: {
-        html: "<p class='govuk-body-s'>" ~ (flow.description | default('')) ~ "</p>
+        html: "<p class='govuk-body-s'>" ~ (flow.description | default('')) ~ "<br /><span class='govuk-hint-text'>" ~ flow.steps.length ~ " pages in flow.</span></p>
         <ol class='govuk-pages-plugin__flows__flow govuk-pages-plugin__flows__flow--with-stages'>" ~ (stageLinks | join(' ')) ~ "</p>"
     }
     } %}
