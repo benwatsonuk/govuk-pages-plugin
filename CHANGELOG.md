@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.2
+
+### Fixes
+- Page Options working for Flows with and without stage information (previously only with stage data)
+
 ## v1.2.1
 
 ### Features
