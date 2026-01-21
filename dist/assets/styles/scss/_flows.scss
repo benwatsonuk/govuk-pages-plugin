@@ -167,4 +167,16 @@
       }
     }
   }
+
+  &__flow {
+    &:not(:has(.govuk-pages-plugin__stages__item)) {
+        .govuk-pages-plugin__flows__item {
+          &:last-of-type {
+            &:before, .govuk-pages-plugin__flows__connector {
+              display: none;
+            }
+          }
+        }
+      }
+  }
 }
