@@ -1,0 +1,133 @@
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-a7a720e7.js';
+import { c as closeIcon } from './close-icon-539ec8d1.js';
+import { a as renderDynamicChildSlots, i as isSlotUsed, p as pxToRem } from './helpers-dcedb279.js';
+import { V as VARIANT_ICONS } from './constants-7960cba4.js';
+
+const icAlertCss = "/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%;}body{margin:0}main{display:block}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible;}pre{font-family:monospace, monospace;font-size:1em;}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em;}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;}button,input{overflow:visible}button,select{text-transform:none}button,[type=\"button\"],[type=\"reset\"],[type=\"submit\"]{-webkit-appearance:button}button::-moz-focus-inner,[type=\"button\"]::-moz-focus-inner,[type=\"reset\"]::-moz-focus-inner,[type=\"submit\"]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=\"button\"]:-moz-focusring,[type=\"reset\"]:-moz-focusring,[type=\"submit\"]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:0.35em 0.75em 0.625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;}progress{vertical-align:baseline}textarea{overflow:auto}[type=\"checkbox\"],[type=\"radio\"]{box-sizing:border-box;padding:0;}[type=\"number\"]::-webkit-inner-spin-button,[type=\"number\"]::-webkit-outer-spin-button{height:auto}[type=\"search\"]{-webkit-appearance:textfield;outline-offset:-2px;}[type=\"search\"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font-style:inherit;vertical-align:baseline}:host{display:block}:host ::slotted(ic-typography){--ic-typography-color:var(--ic-alert-description)}.container{min-height:var(--ic-alert-min-height);border-radius:var(--ic-space-xxs) var(--ic-space-xxxs) var(--ic-space-xxxs)\n    var(--ic-space-xxs);position:relative;display:flex;align-items:center}.container-neutral{background-color:var(--ic-alert-background-neutral);border:var(--ic-space-xxxs) solid var(--ic-alert-border-neutral)}.container-info{background-color:var(--ic-alert-background-info);border:var(--ic-space-xxxs) solid var(--ic-alert-border-info)}.container-warning{background-color:var(--ic-alert-background-warning);border:var(--ic-space-xxxs) solid var(--ic-alert-border-warning)}.container-error{background-color:var(--ic-alert-background-error);border:var(--ic-space-xxxs) solid var(--ic-alert-border-error)}.container-success{background-color:var(--ic-alert-background-success);border:var(--ic-space-xxxs) solid var(--ic-alert-border-success)}.container-ai{background-color:var(--ic-alert-background-ai);border:var(--ic-space-xxxs) solid var(--ic-alert-border-ai)}.divider{height:100%;width:var(--ic-space-xs);border-radius:var(--ic-space-xxxs) 0 0 var(--ic-space-xxxs);position:absolute}.divider-neutral{background-color:var(--ic-alert-status-type-neutral)}.divider-info{background-color:var(--ic-alert-status-type-info)}.divider-warning{background-color:var(--ic-alert-status-type-warning)}.divider-error{background-color:var(--ic-alert-status-type-error)}.divider-success{background-color:var(--ic-alert-status-type-success)}.divider-ai{background-color:var(--ic-alert-status-type-ai)}.alert-icon{align-self:flex-start;margin-top:var(--ic-space-xs);margin-right:var(--ic-space-xs)}.alert-icon>svg{height:var(--ic-space-lg);width:var(--ic-space-lg);display:inline-block}:host(.ic-alert-no-default-icon) .icon-neutral{visibility:hidden;width:0;margin-left:0.625rem}.icon-neutral>svg,::slotted(svg){height:var(--ic-space-lg);width:var(--ic-space-lg);display:inline-block;fill:var(--ic-alert-icon-neutral)}:host(.ic-alert-variant-info) .alert-icon svg{fill:var(--ic-alert-icon-info)}:host(.ic-alert-variant-warning) .alert-icon svg{fill:var(--ic-alert-icon-warning)}:host(.ic-alert-variant-error) .alert-icon svg{fill:var(--ic-alert-icon-error)}:host(.ic-alert-variant-success) .alert-icon svg{fill:var(--ic-alert-icon-success)}:host(.ic-alert-variant-ai) .alert-icon svg{fill:var(--ic-alert-icon-ai)}.alert-content{display:flex;align-items:center;margin-left:1.125rem;width:100%;flex-wrap:wrap}.alert-message{display:flex;align-items:center;padding:var(--ic-space-xs) var(--ic-space-xs) var(--ic-space-xs) 0;flex:1;--ic-typography-color:var(--ic-alert-description)}.alert-message-title-above{display:inline}.alert-title{margin-right:var(--ic-space-xs);margin-top:0;margin-bottom:auto;--ic-typography-color:var(--ic-alert-title)}.alert-title-above{white-space:normal}.alert-action-container{margin-right:var(--ic-space-xs);display:flex;align-items:center}.dismiss-icon{margin-right:var(--ic-space-xxxs);margin-left:-0.375rem;padding:0.375rem;border:none;border-radius:50%;background-color:inherit;display:flex;align-items:center;justify-content:center}.dismiss-icon>svg{color:var(--ic-alert-icon-dismissible)}.dismiss-icon:hover{cursor:pointer}@media (max-width: 628px){.alert-message{display:inline}.alert-title{white-space:normal}.alert-action-container{margin-bottom:var(--ic-space-xs);flex-basis:100%}.alert-icon~.alert-action-container{margin-left:2rem}}@media (forced-colors: active){.container{border:var(--ic-border-hc)}.dismiss-icon>svg{color:var(--ic-architectural-white)}}";
+const IcAlertStyle0 = icAlertCss;
+
+const Alert = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+        this.icDismiss = createEvent(this, "icDismiss", 7);
+        this.hostMutationObserver = null;
+        this.systemThemeObserver = null;
+        this.darkMode = false;
+        this.alertTitleWrap = false;
+        this.visible = true;
+        /**
+         * If `true`, the alert will have the 'alert' ARIA role and will be announced to screen readers.
+         */
+        this.announced = true;
+        /**
+         * If `true`, the alert will have a close icon at the end to dismiss it.
+         */
+        this.dismissible = false;
+        /**
+         * The optional title to display at the start of the alert.
+         */
+        this.heading = "";
+        /**
+         * If `true`, the default icon for the neutral variant will appear on the left of the alert.
+         */
+        this.showDefaultIcon = true;
+        /**
+         * Sets the theme color to the dark or light theme color. "inherit" will set the color based on the system settings or ic-theme component.
+         */
+        this.theme = "inherit";
+        /**
+         * If `true`, the title and message will appear above and below instead of inline.
+         */
+        this.titleAbove = false;
+        /**
+         * The variant of the alert which will be rendered.
+         */
+        this.variant = "neutral";
+        this.dismissAction = () => {
+            this.icDismiss.emit();
+        };
+    }
+    themeChangeHandler() {
+        if (this.theme !== "inherit")
+            this.darkMode = this.theme === "dark";
+    }
+    disconnectedCallback() {
+        var _a, _b;
+        (_a = this.hostMutationObserver) === null || _a === void 0 ? void 0 : _a.disconnect();
+        (_b = this.systemThemeObserver) === null || _b === void 0 ? void 0 : _b.removeEventListener("change", this.darkModeChangeHandler);
+    }
+    componentWillLoad() {
+        if (!this.el.closest("ic-theme")) {
+            this.systemThemeObserver = window.matchMedia("(prefers-color-scheme: dark)");
+            this.systemThemeObserver.addEventListener("change", this.darkModeChangeHandler);
+            this.darkMode = this.systemThemeObserver.matches;
+        }
+        this.themeChangeHandler();
+    }
+    componentDidLoad() {
+        var _a;
+        if (Number((_a = this.titleEl) === null || _a === void 0 ? void 0 : _a.clientHeight) > 24)
+            this.alertTitleWrap = true;
+        this.hostMutationObserver = new MutationObserver((mutationList) => renderDynamicChildSlots(mutationList, "action", this));
+        this.hostMutationObserver.observe(this.el, {
+            childList: true,
+        });
+        this.calculateMinHeight();
+    }
+    componentDidUpdate() {
+        this.calculateMinHeight();
+    }
+    handleClick() {
+        this.visible = !this.visible;
+    }
+    darkModeChangeHandler(ev) {
+        this.darkMode = "detail" in ev ? ev.detail === "dark" : ev.matches;
+        this.calculateMinHeight();
+    }
+    calculateMinHeight() {
+        var _a;
+        const contentHeight = Number((_a = this.messageEl) === null || _a === void 0 ? void 0 : _a.clientHeight);
+        const minHeight = pxToRem(`${(contentHeight > 40 ? contentHeight : 52) + (this.darkMode ? 0 : 4)}`);
+        if (this.el.style.getPropertyValue("--ic-alert-min-height") !== minHeight)
+            this.el.style.setProperty("--ic-alert-min-height", minHeight);
+    }
+    render() {
+        const { variant, heading, message, titleAbove, dismissible, announced, visible, showDefaultIcon, theme, alertTitleWrap, dismissAction, } = this;
+        const Icon = () => {
+            const iconClass = {
+                "alert-icon": true,
+                "svg-container": true,
+                [`icon-${variant}`]: true,
+            };
+            if (variant === "neutral") {
+                if (isSlotUsed(this.el, "neutral-icon")) {
+                    return (h("div", { class: iconClass }, h("slot", { name: "neutral-icon" })));
+                }
+                else if (!showDefaultIcon) {
+                    return h("div", null);
+                }
+            }
+            return (h("span", { class: iconClass, innerHTML: VARIANT_ICONS[variant].icon }));
+        };
+        return (visible && (h(Host, { role: announced ? "alert" : null, class: {
+                [`ic-theme-${theme}`]: theme !== "inherit",
+                [`ic-alert-variant-${variant}`]: true,
+                [`ic-alert-no-default-icon`]: !showDefaultIcon,
+            } }, h("div", { class: { container: true, [`container-${variant}`]: true } }, h("div", { class: { divider: true, [`divider-${variant}`]: true } }), h("div", { class: "alert-content" }, h(Icon, null), h("div", { class: {
+                "alert-message": true,
+                "alert-message-title-above": titleAbove || alertTitleWrap,
+            }, ref: (el) => (this.messageEl = el) }, heading && (h("ic-typography", { class: {
+                "alert-title": true,
+                "alert-title-above": titleAbove || alertTitleWrap,
+            }, variant: "subtitle-large", ref: (el) => (this.titleEl = el) }, h("p", null, heading))), h("slot", { name: "message" }, h("ic-typography", { variant: "body" }, message))), isSlotUsed(this.el, "action") && (h("div", { class: "alert-action-container" }, h("slot", { name: "action" })))), h("div", { class: "dismiss-icon-container" }, dismissible && (h("ic-button", { class: { "svg-container": true, "dismiss-icon": true }, innerHTML: closeIcon, onClick: dismissAction, variant: "icon-tertiary", theme: "dark", title: "Dismiss" })))))));
+    }
+    get el() { return getElement(this); }
+    static get watchers() { return {
+        "theme": ["themeChangeHandler"]
+    }; }
+};
+Alert.style = IcAlertStyle0;
+
+export { Alert as ic_alert };
+
+//# sourceMappingURL=ic-alert.entry.js.map

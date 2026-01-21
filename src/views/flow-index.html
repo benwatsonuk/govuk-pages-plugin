@@ -19,6 +19,8 @@
         <h1 class="govuk-heading-l">Page Flows</h1>
         {% from "govuk/components/details/macro.njk" import govukDetails %}
 
+        <ic-switch label="Coffee preferences"></ic-switch>
+
         {{ govukDetails({
           summaryText: "What are 'Page Flows'?",
           html: "<p>Page Flows are a way of tracking user journeys through a prototype. They help visualise end to end flows for a given user, so that we may see them from an elevated position without the need for creating additional documentation.</p>

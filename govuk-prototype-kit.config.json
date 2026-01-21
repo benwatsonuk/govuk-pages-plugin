@@ -6,8 +6,10 @@
   "assets": [
     "/dist/assets"
   ],
-  "scripts": [
-    "/dist/assets/javascripts/all.js"
+  "scripts": [{
+    "path": "/dist/assets/javascripts/all.js",
+    "type": "module"
+  }
   ],
   "sass": [
     "/dist/assets/styles/all.scss"
