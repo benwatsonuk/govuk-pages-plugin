@@ -8,6 +8,11 @@
       column-gap: govuk-spacing(1);
       overflow-x: scroll;
     }
+    &--inline {
+      display: flex;
+      column-gap: govuk-spacing(1);
+      overflow-x: scroll;
+    }
     &--full-width {
       overflow-x: visible;
     }
