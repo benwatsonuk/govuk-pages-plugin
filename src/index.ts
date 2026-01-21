@@ -6,6 +6,13 @@ import { PagesArray, StagesArray, PageFlowArray } from "./types"
 
 /*--- UTILITIES (used by supplied routes AND made available to plugin users) ---*/
 
+// Omni page (all available views in tabs)
+export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray) => {
+  return (req: any, res: any) => {
+    res.render("omni-page", { pages: pages })
+  }
+}
+
 // Pages
 export const pageIndexData = (pages: PagesArray) => {
   return getPages(pages)
@@ -50,6 +57,6 @@ export const govukPagesPlugin = (pages: PagesArray, stages?: StagesArray, pageTy
   pageType = pageType || "page-index" // Options can be 'all', 'page-index', 'stage-index' - in future could be 'user-flow-index', etc
   const router = Router()
   // This is the default offering from the plugin - it is expected that must users will use this. It should be robust
-  router.get("/", pageIndex(pageIndexData(pages), pageType))
+  router.get("/", omniPage(pageIndexData(pages)))
   return router
 } 
