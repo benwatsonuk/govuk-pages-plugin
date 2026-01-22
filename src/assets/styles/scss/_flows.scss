@@ -2,23 +2,25 @@
   &__flow {
     padding: 0;
     list-style: none;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: govuk-spacing(2);
+    column-gap: govuk-spacing(1);
     &--with-stages {
-      display: flex;
-      column-gap: govuk-spacing(1);
+      flex-wrap: nowrap;
       overflow-x: scroll;
     }
     &--inline {
-      display: flex;
-      column-gap: govuk-spacing(1);
+      flex-wrap: nowrap;
       overflow-x: scroll;
     }
     &--full-width {
       overflow-x: visible;
     }
     &--list {
-      display: block;
+      flex-direction: column;
       overflow: visible;
+      row-gap: govuk-spacing(0);
       .govuk-pages-plugin__stages__item:first-of-type {
         .govuk-pages-plugin__flows__item:first-of-type {
           .govuk-pages-plugin__flows__connector {
@@ -137,6 +139,7 @@
 
   &__item, &__step {
     display: inline-block;
+    background-color: $govuk-body-background-colour;
     @include govuk-font($size: 14);
     width: 170px;
     vertical-align: top;

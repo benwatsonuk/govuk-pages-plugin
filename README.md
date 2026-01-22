@@ -1,9 +1,9 @@
 # govuk-pages-plugin
-A plugin for GOVUK Prototype Kit that shows selected pages in an index (list) so that users can navigate directly to them. 
+A plugin for GOVUK Prototype Kit that shows selected pages in various indexes (lists) and visualises user flows and journeys so that users can navigate directly to them. 
 
-For more information about the GOV.UK Prototype kit:
+The idea is that by providing elevated perspectives of journeys and pages, designers and UCD teams can discuss them without the high fidelity detail of the page, affording them the option of choosing when it is appropriate to 'zoom in' to this detail. 
 
-https://govuk-prototype-kit.herokuapp.com/docs
+The plugin also gives the option of an 'overview' page which allows UCD teams to give some additional context to pages with a 'semi zoomed-in' view, this can be useful to showcase variants, iterations or states of a given page.
 
 ## Requirements
 
@@ -26,6 +26,14 @@ const { govukPagesPlugin } = require('@benwatsonuk/govuk-pages-plugin')
 ```
 
 If you use multiple routes files, include the above code on the pages that you wish to use the features of the plugin on.
+
+Then for the most basic implementation declare the route that you wish to use and call the function to generate all available flows and indexes from the data that you provide:
+
+```js
+router.use(`/path-of-your-choice/pages`, govukPagesPlugin(pages, stages, flows))
+```
+
+For all functions, you MUST provide a valid `pages` property (see below), `stages` and `flows` are always optional but provide some useful functionality. See below about how to use these optionally.
 
 #### Advanced Setup
 
@@ -87,14 +95,33 @@ If this is passed to the plugin, we can visualise user journeys from end to end 
 
 ## Examples
 
+Most basic example:
+
+```js
+const { govukPagesPlugin } = require('@benwatsonuk/govuk-pages-plugin')
+
+// If you have all objects
+router.use(`/path-of-your-choice/pages`, govukPagesPlugin(pages, stages, flows))
+
+// If you have ONLY pages
+router.use(`/path-of-your-choice/pages`, govukPagesPlugin(pages))
+
+// If you have PAGES and STAGES objects
+router.use(`/path-of-your-choice/pages`, govukPagesPlugin(pages, stages))
+
+// If you have PAGES and FLOWS objects
+router.use(`/path-of-your-choice/pages`, govukPagesPlugin(pages, null, flows))
+```
+
 Here are some recipes for adding data to your routes:
 
 ```js
 const { govukPagesPlugin, pageIndex, stageIndex, stageIndexData, pageIndexData } = require('@benwatsonuk/govuk-pages-plugin')
 
-router.use(`/path-of-your-choice/pages`, govukPagesPlugin(pages))
+router.use(`/path-of-your-choice/pages`, govukPagesPlugin(pages, stages, flows))
 router.use(`/path-of-your-choice/page-index`, pageIndex(pages))
 router.use(`/path-of-your-choice/stage-index`, stageIndex(stages, pages))
+router.use(`/path-of-your-choice/flow-index`, flowIndex(flows, pages, stages))
 
 router.get(`/path-of-your-choice/stage-index-test`, (req, res) => {
   res.render(`path-of-your-choice/stage-index-test`, {
@@ -105,6 +132,12 @@ router.get(`/path-of-your-choice/stage-index-test`, (req, res) => {
 router.get(`/path-of-your-choice/page-index-test`, (req, res) => {
   res.render(`path-of-your-choice/page-index-test`, {
     pages: pageIndexData(pages)
+  })
+})
+
+router.get(`/path-of-your-choice/flow-index-test`, (req, res) => {
+  res.render(`path-of-your-choice/flow-index-test`, {
+    pages: flowIndexData(flows, pages, stages)
   })
 })
 ```
@@ -186,6 +219,40 @@ const stages = [
     ]
   }
 ]
+```
+### Flows
+
+```js
+const flows = [
+  {
+    id: 1,
+    title: 'Flow 1',
+    description: 'A description of Flow 1',
+    user: 'User A',
+    steps: [
+      {
+        pageId: 1
+      },
+      {
+        pageId: 2
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Flow 2',
+    description: 'A description of Flow 2',
+    user: 'User B',
+    steps: [
+      {
+        pageId: 2
+      },
+      {
+        pageId: 3
+      }
+    ]
+  }
+];
 ```
 
 

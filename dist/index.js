@@ -1,11 +1,35 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.govukPagesPlugin = exports.flowIndex = exports.flowIndexData = exports.stageIndex = exports.stageIndexData = exports.pageIndex = exports.pageIndexData = void 0;
+exports.govukPagesPlugin = exports.flowIndex = exports.flowIndexData = exports.stageIndex = exports.stageIndexData = exports.pageIndex = exports.pageIndexData = exports.omniPage = void 0;
 const express_1 = require("express");
 const getPages_1 = require("./functions/pages/getPages");
 const getStages_1 = require("./functions/stages/getStages");
 const getFlows_1 = require("./functions/flows/getFlows");
 /*--- UTILITIES (used by supplied routes AND made available to plugin users) ---*/
+// Omni page (all available views in tabs)
+const omniPage = (pages, stages, flows) => {
+    if (stages && flows) {
+        return (req, res) => {
+            res.render("omni-page", { pages: (0, exports.pageIndexData)(pages), stages: (0, exports.stageIndexData)(stages, pages), ...(0, exports.flowIndexData)(flows, pages, stages) });
+        };
+    }
+    else if (stages) {
+        return (req, res) => {
+            res.render("omni-page", { pages: (0, exports.pageIndexData)(pages), stages: (0, exports.stageIndexData)(stages, pages) });
+        };
+    }
+    else if (flows) {
+        return (req, res) => {
+            res.render("omni-page", { pages: (0, exports.pageIndexData)(pages), ...(0, exports.flowIndexData)(flows, pages) });
+        };
+    }
+    else {
+        return (req, res) => {
+            res.render("omni-page", { pages: (0, exports.pageIndexData)(pages) });
+        };
+    }
+};
+exports.omniPage = omniPage;
 // Pages
 const pageIndexData = (pages) => {
     return (0, getPages_1.getPages)(pages);
@@ -44,11 +68,11 @@ const flowIndex = (flows, pages, stages, pageType) => {
 exports.flowIndex = flowIndex;
 // Add user flows, etc here later
 /*--- THE MAIN USER ROUTES ---*/
-const govukPagesPlugin = (pages, stages, pageType) => {
+const govukPagesPlugin = (pages, stages, flows, pageType) => {
     pageType = pageType || "page-index"; // Options can be 'all', 'page-index', 'stage-index' - in future could be 'user-flow-index', etc
     const router = (0, express_1.Router)();
     // This is the default offering from the plugin - it is expected that must users will use this. It should be robust
-    router.get("/", (0, exports.pageIndex)((0, exports.pageIndexData)(pages), pageType));
+    router.get("/", (0, exports.omniPage)(pages, stages, flows));
     return router;
 };
 exports.govukPagesPlugin = govukPagesPlugin;

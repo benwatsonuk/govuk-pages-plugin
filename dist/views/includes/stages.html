@@ -1,0 +1,16 @@
+{{ govukDetails({
+    summaryText: "What is the 'Stage Index'?",
+    html: "<p>This page contains links to tracked pages in this prototype, these pages are grouped by the 'stages' that they are assigned to. It is useful for navigating the prototype without having to go through flows.</p><p>'Stages' are defined by the plugin user but can be thought about as logical groups of pages that work to achieve a common goal, such as 'authenticating' or 'registering'.</p><p class='govuk-body-s'> Note, the prototype might contain more pages than are listed here.</p>"
+}) }} 
+    {% for stage in stages %}
+    <h2>{{ stage.title }}</h2>
+    {% if stage.description %}
+    <p class="govuk-body-s">{{ stage.description }}</p>
+    {% endif %}
+    <ol>
+    {% for page in stage.pages %}
+        <li><a href="{{ page.route }}">{{ page.title }}</a>{% if page.description %} - <span class="govuk-body-s">{{ page.description }}</span> {% endif %}</li>
+    {% endfor %}
+    </ol>
+    <hr/>
+    {% endfor %}
