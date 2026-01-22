@@ -1,4 +1,11 @@
- <div class="govuk-pages-plugin__page-options__trigger">
+
+{{ govukDetails({
+    summaryText: "What is the 'Flow Index'?",
+    html: "<p>The 'Flow Index' contains 'Page Flows', which are a way of tracking user journeys through a prototype. They help visualise end to end flows for a given user, so that we may see them from an elevated position without the need for creating additional documentation.</p>
+    <p class='govuk-body-s'> Note, the prototype might contain more user journeys than are listed here.</p>"
+}) }} 
+
+<div class="govuk-pages-plugin__page-options__trigger">
     <ic-switch id="showPageOptions" label="Show page options" checked="false" size=""></ic-switch>
 </div>
 
@@ -85,21 +92,15 @@
     </div>
 </div>
 
-{{ govukDetails({
-    summaryText: "What are 'Page Flows'?",
-    html: "<p>Page Flows are a way of tracking user journeys through a prototype. They help visualise end to end flows for a given user, so that we may see them from an elevated position without the need for creating additional documentation.</p>
-    <p class='govuk-body-s'> Note, the prototype might contain more user journeys than are listed here.</p>"
-}) }} 
-
 {% from "../components/step.njk" import govukPagesPluginStep %}
 {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 
 <div class="govuk-pages-plugin__flows">
 
 {% if hasStages %}
-    {% include "includes/page-flow-with-stages.html" %}
+    {% include "./page-flow-with-stages.html" %}
 {% else %}
-    {% include "includes/page-flow-no-stages.html" %}   
+    {% include "./page-flow-no-stages.html" %}   
 {% endif %}
 
 </div>

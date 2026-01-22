@@ -10,7 +10,7 @@ const getFlows_1 = require("./functions/flows/getFlows");
 const omniPage = (pages, stages, flows) => {
     if (stages && flows) {
         return (req, res) => {
-            res.render("omni-page", { pages: (0, exports.pageIndexData)(pages), stages: (0, exports.stageIndexData)(stages, pages), flows: (0, exports.flowIndexData)(flows, pages, stages) });
+            res.render("omni-page", { pages: (0, exports.pageIndexData)(pages), stages: (0, exports.stageIndexData)(stages, pages), ...(0, exports.flowIndexData)(flows, pages, stages) });
         };
     }
     else if (stages) {
@@ -20,7 +20,7 @@ const omniPage = (pages, stages, flows) => {
     }
     else if (flows) {
         return (req, res) => {
-            res.render("omni-page", { pages: (0, exports.pageIndexData)(pages), flows: (0, exports.flowIndexData)(flows, pages) });
+            res.render("omni-page", { pages: (0, exports.pageIndexData)(pages), ...(0, exports.flowIndexData)(flows, pages) });
         };
     }
     else {

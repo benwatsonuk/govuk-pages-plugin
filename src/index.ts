@@ -10,7 +10,7 @@ import { PagesArray, StagesArray, PageFlowArray } from "./types"
 export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray) => {
   if (stages && flows) {
     return (req: any, res: any) => {
-      res.render("omni-page", { pages: pageIndexData(pages), stages: stageIndexData(stages, pages), flows: flowIndexData(flows, pages, stages) })
+      res.render("omni-page", { pages: pageIndexData(pages), stages: stageIndexData(stages, pages), ...flowIndexData(flows, pages, stages) })
     }
   } else if (stages) {
     return (req: any, res: any) => {
@@ -18,7 +18,7 @@ export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFl
     }
   } else if (flows) {
     return (req: any, res: any) => {
-      res.render("omni-page", { pages: pageIndexData(pages), flows: flowIndexData(flows, pages) })
+      res.render("omni-page", { pages: pageIndexData(pages), ...flowIndexData(flows, pages) })
     }
   } else {
     return (req: any, res: any) => {

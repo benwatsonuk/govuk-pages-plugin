@@ -2,6 +2,7 @@
 
   &__item {
     border-top:4px solid;
+    background-color: $govuk-body-background-colour;
     .govuk-pages-plugin__flows__flow {
       display: flex;
       column-gap: govuk-spacing(1);
