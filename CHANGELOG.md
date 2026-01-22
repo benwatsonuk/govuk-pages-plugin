@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3.0
+
+### Features
+- 'Omni Page' introduced, user can call one function and have all available indexes in one page dependent on what data has been supplied.
+
 ## v1.2.2
 
 ### Fixes
