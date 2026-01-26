@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.govukPagesPlugin = exports.flowIndex = exports.flowIndexData = exports.stageIndex = exports.stageIndexData = exports.pageIndex = exports.pageIndexData = exports.omniPage = void 0;
+exports.govukPagesPlugin = exports.flowIndex = exports.flowIndexData = exports.stageIndex = exports.stageIndexData = exports.pageIndex = exports.pageIndexData = exports.pageOverview = exports.pageOverviewData = exports.omniPage = void 0;
 const express_1 = require("express");
 const getPages_1 = require("./functions/pages/getPages");
 const getStages_1 = require("./functions/stages/getStages");
@@ -30,6 +30,20 @@ const omniPage = (pages, stages, flows) => {
     }
 };
 exports.omniPage = omniPage;
+// Single Page Overview 
+const pageOverviewData = (pageId, pages) => {
+    const pagesData = (0, getPages_1.getPages)(pages);
+    return pagesData.find(page => pageId === page.id);
+};
+exports.pageOverviewData = pageOverviewData;
+const pageOverview = (pageId, pages, req, res) => {
+    const page = pages.find(p => p.id === pageId);
+    if (!page) {
+        return res.status(404).render("page-overview", { noPage: true });
+    }
+    res.render("page-overview", { page });
+};
+exports.pageOverview = pageOverview;
 // Pages
 const pageIndexData = (pages) => {
     return (0, getPages_1.getPages)(pages);

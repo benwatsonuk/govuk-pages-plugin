@@ -1,0 +1,22 @@
+{% extends "./layouts/govuk-pages-plugin.html" %}
+
+{% block pageTitle %}
+  Page Overview
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-pages-plugin">
+
+        {% if noPage %}
+        <h1 class="govuk-heading-l">Oops, no page exists with that ID!</h1>
+        {% else %}
+        <span class="govuk-caption-m">Page Overview</span>
+        <h1 class="govuk-heading-l">{{ page.title }}</h1>
+
+        {% include './includes/page-overview.html' %}
+
+        {% endif %}
+    </div>
+
+{% endblock %}

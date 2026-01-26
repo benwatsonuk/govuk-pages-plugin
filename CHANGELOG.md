@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.4.0
+
+### Features
+- 'Overview Page' added to offer a step between the index/flow and the page itself. This allows users to zoom in to the page and its detail without being dropped directly to the page. It is a 'slightly elevated' view of the page.
+
 ## v1.3.0
 
 ### Features

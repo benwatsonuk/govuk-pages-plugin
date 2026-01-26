@@ -1,4 +1,4 @@
-import { PageFlowOutput } from "../../src/types"
+import { PageFlowOutput, PageOutput } from "../../src/types"
 
 export const getPagesTest = {
     output: [
@@ -426,5 +426,18 @@ export const getPageFlowTestB : { output: { hasStages: boolean, flows: PageFlowO
                 ]
             }
         ]
+    }
+}
+
+export const getPageTestA: PageOutput = {
+    id: 1,
+    title: "Page 1",
+    route: "/page/1",
+    type: "content",
+    description: "Description of page 1",
+    stage: {
+        main: {
+            
+        }
     }
 }
