@@ -4,6 +4,20 @@
   Page Overview
 {% endblock %}
 
+{% block beforeContent %}
+    <div class="govuk-pages-plugin__page__header">
+        {{ govukBackLink({
+            href: "javascript:history.back(-1)"
+        })}}
+
+        {{ govukButton({
+            text: "Go to page",
+            href: "../" + page.route,
+            isStartButton: true
+        })}}
+    </div>  
+{% endblock %}
+
 {% block content %}
 
     <div class="govuk-pages-plugin">

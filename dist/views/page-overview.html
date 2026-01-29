@@ -4,10 +4,23 @@
   Page Overview
 {% endblock %}
 
+{% block beforeContent %}
+    <div class="govuk-pages-plugin__page__header">
+        {{ govukBackLink({
+            href: "javascript:history.back(-1)"
+        })}}
+
+        {{ govukButton({
+            text: "Go to page",
+            href: "../" + page.route,
+            isStartButton: true
+        })}}
+    </div>  
+{% endblock %}
+
 {% block content %}
 
     <div class="govuk-pages-plugin">
-
         {% if noPage %}
         <h1 class="govuk-heading-l">Oops, no page exists with that ID!</h1>
         {% else %}
@@ -17,6 +30,7 @@
         {% include './includes/page-overview.html' %}
 
         {% endif %}
+
     </div>
 
 {% endblock %}

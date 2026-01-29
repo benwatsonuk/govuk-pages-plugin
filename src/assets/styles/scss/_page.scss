@@ -15,5 +15,16 @@
       border: 0;
     }
   }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .govuk-button {
+        @include govuk-responsive-margin(2, "top");
+        @include govuk-responsive-margin(2, "bottom");
+    }
+  }
   
 }

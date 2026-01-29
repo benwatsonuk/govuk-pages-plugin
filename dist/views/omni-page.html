@@ -9,6 +9,18 @@
       <div class="govuk-pages-plugin">
         <ic-theme theme="light">
           <h1 class="govuk-heading-l">Pages</h1>
+
+          {% set pageOptions %}
+            <p>Page options</p>
+            <div class="govuk-pages-plugin__page-options__container">
+              <ic-switch id="showList" label="Show Flows as list" checked="false" size="small" helper-text="Toggle between vertical list and horizontal flow"></ic-switch>
+            </div>
+          {% endset %}
+
+          {{ govukDetails({
+            summaryText: "Page options",
+            html: pageOptions
+          })}}
           {% from "govuk/components/details/macro.njk" import govukDetails %}
 
           <!-- {{ govukDetails({
