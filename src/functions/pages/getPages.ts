@@ -8,11 +8,11 @@ export const getPages = (pages: PagesArray) => {
 
 export const getPage = (pageId: number, pages: PagesArray) => {
   const validatedPages = validatePagesArray(pages)
-  const page = validatedPages.find(page => page.id === pageId)
+  const page = validatedPages.find(p => p.id === pageId)
   if (page) {
     return page
   } 
   throw new Error(
-    `Page ID does not exist`
+    `Page ID ${pageId} does not exist`
   )
 }

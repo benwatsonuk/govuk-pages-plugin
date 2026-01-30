@@ -27,7 +27,7 @@ describe('Basic getPage functions', () => {
       })
       
       it('should return a useful error if an INVALID page ID is provided', () => {
-        expect(() => getPages.getPage(100, validPages)).to.throw("Page ID does not exist")
+        expect(() => getPages.getPage(100, validPages)).to.throw("Page ID 100 does not exist")
       })
 
       it('should return a useful error when INVALID pages JSON is provided', () => {
