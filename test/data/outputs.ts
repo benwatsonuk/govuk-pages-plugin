@@ -436,8 +436,7 @@ export const getPageTestA: PageOutput = {
     type: "content",
     description: "Description of page 1",
     stage: {
-        main: {
-            
-        }
+        main: 'example',
+        subStage: 'sub-example'
     }
 }
