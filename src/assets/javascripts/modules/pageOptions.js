@@ -1,159 +1,160 @@
-export const InitIcSwitches = () => {
-    watchForToggle();
-    
-    const SWITCH_HANDLERS = {
-        showPageOptions: {
-            onToggleOn: exampleFunc,
-            onToggleOff: exampleFunc
-        },
-        showList: {
-            targets: '.govuk-pages-plugin__flows__flow',
-            className: 'govuk-pages-plugin__flows__flow--list',
-            hideControls: ['showFullWidth', 'showInline'],
-            hideOnChecked: true
-        },
-        showInline: {
-            targets: '.govuk-pages-plugin__flows__flow',
-            className: 'govuk-pages-plugin__flows__flow--inline',
-            hideControls: ['showFullWidth'],
-            hideOnChecked: false
-        },
-        showPageOptions: {
-            targets: '.govuk-pages-plugin__page-options',
-            className: 'govuk-visually-hidden',
-            inverse: true
-        },
-        showFullWidth: {
-            targets: '.govuk-pages-plugin__flows__flow',
-            className: 'govuk-pages-plugin__flows__flow--full-width'
-        }
-    };
+/* ============================================================
+   Actions
+   ============================================================ */
 
-    const toggleClassOnTargets = (selector, className, add) => {
-        const targets = document.querySelectorAll(selector);
-        targets.forEach(t => {
-            t.classList[add ? 'add' : 'remove'](className);
-        });
-    };
-
-    const setControlVisibility = (ids, hide) => {
-        ids.forEach(id => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            el.classList.toggle('govuk-visually-hidden', hide);
-        });
-    };
-
-    const ACTIONS = {
-        // signature: (checked, cfg, ev)
-        noop: () => {},
-        // example action that toggles visibility of an element id provided in cfg.actionTarget
-        toggleElement: (checked, cfg) => {
-            if (!cfg.actionTarget) return;
-            const el = document.getElementById(cfg.actionTarget);
-            if (!el) return;
-            el.classList.toggle('govuk-visually-hidden', !checked);
-        }
-    };
-
-    const handler = ev => {
-        const src = ev.target || ev.srcElement;
-        if (!src || !src.id) return;
-        const cfg = SWITCH_HANDLERS[src.id];
-        if (!cfg) return;
-
-        const checked = !!(ev.detail && ev.detail.checked);
-
-        if (cfg.targets && cfg.className) {
-            const add = cfg.inverse ? !checked : checked;
-            toggleClassOnTargets(cfg.targets, cfg.className, add);
-        }
-
-        if (cfg.hideControls && Array.isArray(cfg.hideControls)) {
-            const hide = cfg.hideOnChecked ? checked : !checked;
-            setControlVisibility(cfg.hideControls, hide);
-        }
-
-        // New: support separate handlers for on / off
-        if (cfg.onToggleOn || cfg.onToggleOff) {
-            if (checked && cfg.onToggleOn) {
-                let action = cfg.onToggleOn;
-                if (typeof action === 'string') action = ACTIONS[action];
-                if (typeof action === 'function') {
-                    try { action(true, cfg, ev); } catch (err) { console.error('pageOptions onToggleOn error', err); }
-                }
-            }
-            if (!checked && cfg.onToggleOff) {
-                let action = cfg.onToggleOff;
-                if (typeof action === 'string') action = ACTIONS[action];
-                if (typeof action === 'function') {
-                    try { action(false, cfg, ev); } catch (err) { console.error('pageOptions onToggleOff error', err); }
-                }
-            }
-        } else if (cfg.onToggle) {
-            // backward-compatible: single onToggle with optional onToggleOnChecked flag
-            let action = cfg.onToggle;
-            if (typeof action === 'string') action = ACTIONS[action];
-            if (typeof action === 'function') {
-                const shouldFire = cfg.hasOwnProperty('onToggleOnChecked') ? !!cfg.onToggleOnChecked : true;
-                if ((checked && shouldFire) || (!checked && !shouldFire)) {
-                    try { action(checked, cfg, ev); } catch (err) { console.error('pageOptions onToggle handler error', err); }
-                }
-            }
-        }
-    };
-
-    document.addEventListener('icChange', handler);
+const ACTIONS = {
+  toggleElement: (checked, cfg) => {
+    const el = document.getElementById(cfg.actionTarget);
+    if (!el) return;
+    el.classList.toggle("govuk-visually-hidden", !checked);
+  }
 };
 
-const noop = () => {};
+/* ============================================================
+   Switch configuration
+   ============================================================ */
 
-const exampleFunc = (checked, cfg, ev) => {
-    console.log("I'm running! - checked: " + checked);
+const SWITCH_HANDLERS = {
+  showPageOptions: {
+    targets: ".govuk-pages-plugin__page-options",
+    className: "govuk-visually-hidden",
+    inverse: true,
+    onToggleOn: exampleFunc,
+    onToggleOff: exampleFunc
+  },
+
+  showList: {
+    targets: ".govuk-pages-plugin__flows__flow",
+    className: "govuk-pages-plugin__flows__flow--list",
+    hideControls: ["showFullWidth", "showInline"],
+    hideOnChecked: true
+  },
+
+  showInline: {
+    targets: ".govuk-pages-plugin__flows__flow",
+    className: "govuk-pages-plugin__flows__flow--inline",
+    hideControls: ["showFullWidth"],
+    hideOnChecked: false
+  },
+
+  showFullWidth: {
+    targets: ".govuk-pages-plugin__flows__flow",
+    className: "govuk-pages-plugin__flows__flow--full-width"
+  }
 };
 
-export const InitPageOverviewToggleWatch = () => {
-    const toggle = document.querySelector("#usePageOverview");
+/* ============================================================
+   Helper functions
+   ============================================================ */
 
-    if (!toggle || toggle.dataset.bound) return;
-
-    toggle.dataset.bound = "true";
-    updateFlowLinks(toggle.checked);
-    toggle.addEventListener("icChange", e => {
-        updateFlowLinks(e.detail.checked);
-    });
-}
-
-export const updateFlowLinks = (useOverview) => {
-  const links = document.querySelectorAll(
-    ".govuk-pages-plugin__pages__link"
-  );
-
-  links.forEach(link => {
-    const overviewLink = link.dataset.overviewPageLink;
-    const directLink = link.dataset.directLink;
-    if (!overviewLink || !directLink) return;
-    link.href = useOverview ? overviewLink : directLink;
+const toggleClassOnTargets = (selector, className, add) => {
+  document.querySelectorAll(selector).forEach(el => {
+    el.classList.toggle(className, add);
   });
-}
+};
 
-const watchForToggle = () => {
-  const existingToggle = document.querySelector("#usePageOverview input.ic-input");
-  if (existingToggle) {
-    InitPageOverviewToggleWatch(existingToggle);
-    return;
+const setControlVisibility = (ids, hide) => {
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle("govuk-visually-hidden", hide);
+  });
+};
+
+/* ============================================================
+   Main icChange handler
+   ============================================================ */
+
+const handleIcChange = ev => {
+  const src = ev.target;
+  if (!src || !src.id) return;
+
+  const cfg = SWITCH_HANDLERS[src.id];
+  if (!cfg) return;
+
+  const checked = !!ev.detail?.checked;
+
+  // Toggle classes
+  if (cfg.targets && cfg.className) {
+    const add = cfg.inverse ? !checked : checked;
+    toggleClassOnTargets(cfg.targets, cfg.className, add);
   }
 
+  // Hide/show related controls
+  if (cfg.hideControls) {
+    const hide = cfg.hideOnChecked ? checked : !checked;
+    setControlVisibility(cfg.hideControls, hide);
+  }
+
+  // Run actions
+  const runAction = action => {
+    if (typeof action === "string") action = ACTIONS[action];
+    if (typeof action === "function") {
+      try {
+        action(checked, cfg, ev);
+      } catch (e) {
+        console.error("Switch action error", e);
+      }
+    }
+  };
+
+  if (checked && cfg.onToggleOn) runAction(cfg.onToggleOn);
+  if (!checked && cfg.onToggleOff) runAction(cfg.onToggleOff);
+};
+
+/* ============================================================
+   Init ic-switch handling
+   ============================================================ */
+
+export const InitIcSwitches = () => {
+  document.addEventListener("icChange", handleIcChange);
+  watchForPageOverviewToggle();
+};
+
+/* ============================================================
+   Page overview toggle logic
+   ============================================================ */
+
+export const updateFlowLinks = useOverview => {
+  document.querySelectorAll(".govuk-pages-plugin__pages__link").forEach(link => {
+    const { overviewPageLink, directLink } = link.dataset;
+    if (!overviewPageLink || !directLink) return;
+    link.href = useOverview ? overviewPageLink : directLink;
+  });
+};
+
+const watchForPageOverviewToggle = () => {
+  const init = toggle => {
+    if (toggle.dataset.bound) return;
+    toggle.dataset.bound = "true";
+
+    updateFlowLinks(toggle.checked);
+
+    toggle.addEventListener("icChange", e => {
+      updateFlowLinks(e.detail.checked);
+    });
+  };
+
+  const existing = document.querySelector("#usePageOverview");
+  if (existing) return init(existing);
+
   const observer = new MutationObserver(() => {
-    const toggle = document.querySelector("#usePageOverview input.ic-input");
+    const toggle = document.querySelector("#usePageOverview");
     if (!toggle) return;
 
     observer.disconnect();
-    InitPageOverviewToggleWatch(toggle);
+    init(toggle);
   });
 
   observer.observe(document.body, {
     childList: true,
     subtree: true
   });
-}
+};
+
+/* ============================================================
+   Example custom action
+   ============================================================ */
+
+function exampleFunc(checked, cfg){
+  console.log("Switch toggled:", checked, cfg);
+};
