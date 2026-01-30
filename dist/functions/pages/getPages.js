@@ -9,10 +9,10 @@ const getPages = (pages) => {
 exports.getPages = getPages;
 const getPage = (pageId, pages) => {
     const validatedPages = (0, validate_1.validatePagesArray)(pages);
-    const page = validatedPages.find(page => page.id === pageId);
+    const page = validatedPages.find(p => p.id === pageId);
     if (page) {
         return page;
     }
-    throw new Error(`Page ID does not exist`);
+    throw new Error(`Page ID ${pageId} does not exist`);
 };
 exports.getPage = getPage;
