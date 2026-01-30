@@ -1,0 +1,15 @@
+{% if page.description %}
+    <p>{{ page.description }}</p>
+{% endif %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-pages-plugin__page__preview">
+            <iframe class="govuk-pages-plugin__page__preview__screen" src="../{{page.route}}"></iframe>
+        </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+        <!-- <a href="../{{ page.route }}">Go to page</a> -->
+    </div>
+</div>

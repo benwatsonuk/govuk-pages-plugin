@@ -6,11 +6,10 @@
 }) }} 
 
 <div class="govuk-pages-plugin__page-options__trigger">
-    <ic-switch id="showPageOptions" label="Show page options" checked="false" size=""></ic-switch>
+    <ic-switch id="showPageOptions" label="Show Flow options" checked="false" size=""></ic-switch>
 </div>
 
 <div class="govuk-pages-plugin__page-options govuk-visually-hidden">
-    <h2 class="govuk-heading-s">Page options</h2>
     <div class="govuk-pages-plugin__page-options__container">
     <ic-switch id="showList" label="Show Flows as list" checked="false" size="small" helper-text="Toggle between vertical list and horizontal flow"></ic-switch>
     {% if not hasStages %}
@@ -19,75 +18,7 @@
     <ic-switch id="showFullWidth" label="Show full width" checked="false" size="small" helper-text="Allow large flows to extend beyond edge of screen"></ic-switch>
 
     <script>
-        const switchEl = document.querySelectorAll('ic-switch');
-        switchEl.forEach( el => { addEventListener('icChange', (ev) => {
-        if (ev.srcElement.id === 'showList') {
-            const target = document.querySelectorAll(".govuk-pages-plugin__flows__flow");
-            const classToUse = 'govuk-pages-plugin__flows__flow--list'
-            const showFullWidth = document.getElementById("showFullWidth");
-            const showInline = document.getElementById("showInline");
-            if (ev.detail.checked === true) {
-            target.forEach(a => {
-                a.classList.add(classToUse)
-                if (showFullWidth) {
-                showFullWidth.classList.add("govuk-visually-hidden");
-                }
-                if (showInline) {
-                showInline.classList.add("govuk-visually-hidden");
-                }
-                })  
-            } else {
-            target.forEach(a => {
-                a.classList.remove(classToUse)
-                if (showFullWidth) {
-                showFullWidth.classList.remove("govuk-visually-hidden");
-                }
-                if (showInline) {
-                showInline.classList.remove("govuk-visually-hidden");
-                }
-            })  
-            }
-        } else if (ev.srcElement.id === 'showInline') {
-            const target = document.querySelectorAll(".govuk-pages-plugin__flows__flow");
-            const classToUse = 'govuk-pages-plugin__flows__flow--inline'
-            if (ev.detail.checked === true) {
-            target.forEach(a => {
-                a.classList.add(classToUse)
-                document.getElementById('showFullWidth').classList.remove('govuk-visually-hidden')
-            })  
-            } else {
-            target.forEach(a => {
-                a.classList.remove(classToUse)
-                document.getElementById('showFullWidth').classList.add('govuk-visually-hidden')
-            })  
-            }
-        } else if (ev.srcElement.id === 'showPageOptions') {
-            const target = document.querySelectorAll(".govuk-pages-plugin__page-options");
-            const classToUse = 'govuk-visually-hidden'
-            if (ev.detail.checked === true) {
-            target.forEach(a => {
-                a.classList.remove(classToUse)
-            })  
-            } else {
-            target.forEach(a => {
-                a.classList.add(classToUse)
-            })  
-            }
-        } else if (ev.srcElement.id === 'showFullWidth') {
-            const target = document.querySelectorAll(".govuk-pages-plugin__flows__flow");
-            const classToUse = 'govuk-pages-plugin__flows__flow--full-width'
-            if (ev.detail.checked === true) {
-            target.forEach(a => {
-                a.classList.add(classToUse)
-            })  
-            } else {
-            target.forEach(a => {
-                a.classList.remove(classToUse)
-            })  
-            }
-        }
-        })
-    })
+       
     </script>
     </div>
 </div>

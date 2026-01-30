@@ -2,7 +2,7 @@ import {Router} from "express"
 import { getPages } from "./functions/pages/getPages"
 import { getStagesWithPages } from "./functions/stages/getStages"
 import { getFlows } from "./functions/flows/getFlows"
-import { PagesArray, StagesArray, PageFlowArray } from "./types"
+import { PagesArray, StagesArray, PageFlowArray, PageOutput } from "./types"
 
 /*--- UTILITIES (used by supplied routes AND made available to plugin users) ---*/
 
@@ -25,6 +25,20 @@ export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFl
       res.render("omni-page", { pages: pageIndexData(pages) })
     }
   }
+}
+
+// Single Page Overview 
+export const pageOverviewData = (pageId: number, pages: PagesArray): PageOutput | undefined => {
+  const pagesData = getPages(pages)
+  return pagesData.find(page => pageId === page.id)
+}
+
+export const pageOverview = (pageId: number, pages: PagesArray, req: any, res: any) => {
+  const page = pages.find(p => p.id === pageId);
+  if (!page) {
+    return res.status(404).render("page-overview", {noPage: true});
+  }
+  res.render("page-overview", { page });
 }
 
 // Pages

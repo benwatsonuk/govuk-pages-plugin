@@ -9,12 +9,19 @@
       <div class="govuk-pages-plugin">
         <ic-theme theme="light">
           <h1 class="govuk-heading-l">Pages</h1>
-          {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-          <!-- {{ govukDetails({
-            summaryText: "What is the 'Stage Index'?",
-            html: "<p>This page contains links to tracked pages in this prototype, these pages are grouped by the 'stages' that they are assigned to. It is useful for navigating the prototype without having to go through flows.</p><p>'Stages' are defined by the plugin user but can be throught about as logical groups of pages that work to achieve a common goal, such as 'authenticating' or 'registering'.</p><p class='govuk-body-s'> Note, the prototype might contain more pages than are listed here.</p>"
-          }) }}  -->
+          {% set pageOptions %}
+            <div class="govuk-pages-plugin__page-options__container">
+              <ic-switch id="usePageOverview" label="Page links go to an overview page" checked="true" size="small" helper-text="If checked, all links to pages will go to an overview page rather than directly to referenced page"></ic-switch>
+            </div>
+          {% endset %}
+
+          {{ govukDetails({
+            summaryText: "Page options",
+            html: pageOptions
+          })}}
+          
+          {% from "govuk/components/details/macro.njk" import govukDetails %}
 
           {% set tabItems = [] %}
 

@@ -1,7 +1,7 @@
 {% macro pageItem(params) %}
 
     <div class="govuk-pages-plugin__page__item">
-        <a href="{{ params.page.route }}">
+        <a class="govuk-pages-plugin__pages__link" href="{{ params.page.route }}" data-overview-page-link="./page/{{params.page.id}}" data-direct-link="{{ params.page.route }}">
         {{ params.page.title }}
         </a>
     </div>

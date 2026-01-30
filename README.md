@@ -22,7 +22,7 @@ npm install https://github.com/benwatsonuk/govuk-pages-plugin
 #### Basic Setup
 
 ```js
-const { govukPagesPlugin } = require('@benwatsonuk/govuk-pages-plugin')
+const { govukPagesPlugin, pageOverview } = require('@benwatsonuk/govuk-pages-plugin')
 ```
 
 If you use multiple routes files, include the above code on the pages that you wish to use the features of the plugin on.
@@ -31,6 +31,10 @@ Then for the most basic implementation declare the route that you wish to use an
 
 ```js
 router.use(`/path-of-your-choice/pages`, govukPagesPlugin(pages, stages, flows))
+
+router.get(`/path-of-your-choice/page/:pageId`, (req, res) => {
+  pageOverview(Number(req.params.pageId), pages, req, res)
+})
 ```
 
 For all functions, you MUST provide a valid `pages` property (see below), `stages` and `flows` are always optional but provide some useful functionality. See below about how to use these optionally.
