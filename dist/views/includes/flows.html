@@ -6,11 +6,10 @@
 }) }} 
 
 <div class="govuk-pages-plugin__page-options__trigger">
-    <ic-switch id="showPageOptions" label="Show page options" checked="false" size=""></ic-switch>
+    <ic-switch id="showPageOptions" label="Show Flow options" checked="false" size=""></ic-switch>
 </div>
 
 <div class="govuk-pages-plugin__page-options govuk-visually-hidden">
-    <h2 class="govuk-heading-s">Page options</h2>
     <div class="govuk-pages-plugin__page-options__container">
     <ic-switch id="showList" label="Show Flows as list" checked="false" size="small" helper-text="Toggle between vertical list and horizontal flow"></ic-switch>
     {% if not hasStages %}

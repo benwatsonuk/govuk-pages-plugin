@@ -127,7 +127,7 @@ const watchForPageOverviewToggle = () => {
     if (toggle.dataset.bound) return;
     toggle.dataset.bound = "true";
 
-    updateFlowLinks(toggle.checked);
+    updateFlowLinks(toggle.attributes.checked);
 
     toggle.addEventListener("icChange", e => {
       updateFlowLinks(e.detail.checked);
