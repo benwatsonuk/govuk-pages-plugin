@@ -431,12 +431,12 @@ export const getPageFlowTestB : { output: { hasStages: boolean, flows: PageFlowO
 
 export const getPageTestA: PageOutput = {
     id: 1,
-    title: "Page 1",
-    route: "/page/1",
-    type: "content",
-    description: "Description of page 1",
+    title: "Title 1",
+    type: "email",
+    description: "A description about item 1",
+    route: "/a/a/1",    
     stage: {
-        main: 'example',
-        subStage: 'sub-example'
+        main: "stage1",
+        subStage: 1,
     }
 }
