@@ -126,7 +126,7 @@ export const InitPageOverviewToggleWatch = () => {
 
 export const updateFlowLinks = (useOverview) => {
   const links = document.querySelectorAll(
-    ".govuk-pages-plugin__flows__step"
+    ".govuk-pages-plugin__pages__link"
   );
 
   links.forEach(link => {
