@@ -140,7 +140,7 @@
   &__item, &__step {
     display: inline-block;
     background-color: $govuk-body-background-colour;
-    @include govuk-font($size: 14);
+    font-size: 0.8rem;
     width: 170px;
     vertical-align: top;
     position: relative;

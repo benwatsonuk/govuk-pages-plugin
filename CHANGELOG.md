@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.4.3
+
+### Fixes
+- Incompatible with updated GOVUK FRONTEND - issue resolved with this fix.
+
+## v1.4.2
+
+### Fixes
+- Incompatible with updated GOVUK FRONTEND - issue resolved with this fix.
+
 ## v1.4.1
 
 ### Fixes
