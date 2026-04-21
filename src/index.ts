@@ -7,10 +7,11 @@ import { PagesArray, StagesArray, PageFlowArray, PageOutput } from "./types"
 /*--- UTILITIES (used by supplied routes AND made available to plugin users) ---*/
 
 // Omni page (all available views in tabs)
-export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray, version?: number, phase?: string) => {
-  const pagesdata = pageIndexData(pages)
-  
+export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray, phase?: string, version?: number) => {
+  const pagesdata = pageIndexData(pages, phase, version)
+          console.log('P:' + phase + ' V:' + version)
 
+// console.log(pagesdata)
   if (stages && flows) {
     return (req: any, res: any) => {
       res.render("omni-page", { pages: pagesdata, stages: stageIndexData(stages, pages), ...flowIndexData(flows, pages, stages) })
@@ -45,8 +46,8 @@ export const pageOverview = (pageId: number, pages: PagesArray, req: any, res: a
 }
 
 // Pages
-export const pageIndexData = (pages: PagesArray) => {
-  return getPages(pages)
+export const pageIndexData = (pages: PagesArray, phase?: string, version?: number) => {
+  return getPages(pages, phase, version)
 }
 
 export const pageIndex = (pages: PagesArray, pageType: string) => {
@@ -84,10 +85,10 @@ export const flowIndex = (flows: PageFlowArray, pages: PagesArray, stages?: Stag
 
 /*--- THE MAIN USER ROUTES ---*/
 
-export const govukPagesPlugin = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray, pageType?: string, version?: number, phase?: string) => {
+export const govukPagesPlugin = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray, pageType?: string, phase?: string, version?: number, ) => {
   pageType = pageType || "page-index" // Options can be 'all', 'page-index', 'stage-index' - in future could be 'user-flow-index', etc
   const router = Router()
   // This is the default offering from the plugin - it is expected that must users will use this. It should be robust
-  router.get("/", omniPage(pages, stages, flows, version, phase))
+  router.get("/", omniPage(pages, stages, flows, phase, version))
   return router
 } 

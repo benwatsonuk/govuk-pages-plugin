@@ -11,13 +11,14 @@ export const getPages = (pages: PagesArray, phase?: string, version?: number) =>
   validatedPages.map(p => {
     if (p.iterations) {
       if (phase && version) {
+        console.log('P:' + phase + ' V:' + version)
         const iteration = p.iterations.find(i => i.phase === phase && i.version === version)
         if (iteration) {
           p.hasIteration = true
+        } else {  
+          p.hasIteration = false
         }
-      } else {  
-      p.hasIteration = false
-      }
+      } 
       return p
     }
   })

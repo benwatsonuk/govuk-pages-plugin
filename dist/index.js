@@ -7,8 +7,10 @@ const getStages_1 = require("./functions/stages/getStages");
 const getFlows_1 = require("./functions/flows/getFlows");
 /*--- UTILITIES (used by supplied routes AND made available to plugin users) ---*/
 // Omni page (all available views in tabs)
-const omniPage = (pages, stages, flows, version, phase) => {
-    const pagesdata = (0, exports.pageIndexData)(pages);
+const omniPage = (pages, stages, flows, phase, version) => {
+    const pagesdata = (0, exports.pageIndexData)(pages, phase, version);
+    console.log('P:' + phase + ' V:' + version);
+    // console.log(pagesdata)
     if (stages && flows) {
         return (req, res) => {
             res.render("omni-page", { pages: pagesdata, stages: (0, exports.stageIndexData)(stages, pages), ...(0, exports.flowIndexData)(flows, pages, stages) });
@@ -46,8 +48,8 @@ const pageOverview = (pageId, pages, req, res) => {
 };
 exports.pageOverview = pageOverview;
 // Pages
-const pageIndexData = (pages) => {
-    return (0, getPages_1.getPages)(pages);
+const pageIndexData = (pages, phase, version) => {
+    return (0, getPages_1.getPages)(pages, phase, version);
 };
 exports.pageIndexData = pageIndexData;
 const pageIndex = (pages, pageType) => {
@@ -83,11 +85,11 @@ const flowIndex = (flows, pages, stages, pageType) => {
 exports.flowIndex = flowIndex;
 // Add user flows, etc here later
 /*--- THE MAIN USER ROUTES ---*/
-const govukPagesPlugin = (pages, stages, flows, pageType, version, phase) => {
+const govukPagesPlugin = (pages, stages, flows, pageType, phase, version) => {
     pageType = pageType || "page-index"; // Options can be 'all', 'page-index', 'stage-index' - in future could be 'user-flow-index', etc
     const router = (0, express_1.Router)();
     // This is the default offering from the plugin - it is expected that must users will use this. It should be robust
-    router.get("/", (0, exports.omniPage)(pages, stages, flows, version, phase));
+    router.get("/", (0, exports.omniPage)(pages, stages, flows, phase, version));
     return router;
 };
 exports.govukPagesPlugin = govukPagesPlugin;
