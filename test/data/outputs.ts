@@ -440,3 +440,52 @@ export const getPageTestA: PageOutput = {
         subStage: 1,
     }
 }
+
+export const getPagesTestIterations = [
+  {
+    id: 1,
+    title: 'Title 1',
+    type: 'email',
+    description: 'A description about item 1',
+    route: '/a/a/1',
+    hasIteration: true,
+    iterations: [
+      {
+        phase: 'phase1',
+        version: 1,
+        notes: 'Notes about this iteration'
+      },
+      {
+        phase: 'phase1',
+        version: 2,
+        notes: 'Notes about this iteration'
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Title 2',
+    type: 'email',
+    description: 'A description about item 2',
+    route: '/a/b/2'
+  }
+]
+
+
+export const getPagesTestNewFlag = [
+  {
+    id: 1,
+    title: 'Title 1',
+    type: 'email',
+    description: 'A description about item 1',
+    route: '/a/a/1',
+    newPage: true
+  },
+  {
+    id: 2,
+    title: 'Title 2',
+    type: 'email',
+    description: 'A description about item 2',
+    route: '/a/b/2'
+  }
+]

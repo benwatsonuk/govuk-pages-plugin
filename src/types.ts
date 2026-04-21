@@ -10,6 +10,13 @@ export interface Page {
     main: string,
     subStage?: number | string
   }
+  newPage?: boolean
+  hasIteration?: boolean
+  iterations?: {
+    phase: string
+    version: number
+    notes?: string
+  }[]
 }
 
 // End Pages
@@ -69,7 +76,7 @@ export interface StepOutput extends Page {
 }
 
 export interface PageOutput extends Page {
-  
+ 
 }
 
 export interface StepGroup {

@@ -52,7 +52,21 @@
                                 },
                                 "additionalProperties": false
                             },
-                            "description": { "type": ["string", "null"] }
+                            "description": { "type": ["string", "null"] },
+                            "newPage": { "type": ["boolean", "null"] },
+                            "iterations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": ["phase", "version"],
+                                    "properties": {
+                                        "phase": { "type": "string" },
+                                        "version": { "type": ["integer"] },
+                                        "notes": { "type": ["string", "null"] }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            }
                         },
                         "additionalProperties": true
                     }

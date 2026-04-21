@@ -7,22 +7,25 @@ import { PagesArray, StagesArray, PageFlowArray, PageOutput } from "./types"
 /*--- UTILITIES (used by supplied routes AND made available to plugin users) ---*/
 
 // Omni page (all available views in tabs)
-export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray) => {
+export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray, version?: number, phase?: string) => {
+  const pagesdata = pageIndexData(pages)
+  
+
   if (stages && flows) {
     return (req: any, res: any) => {
-      res.render("omni-page", { pages: pageIndexData(pages), stages: stageIndexData(stages, pages), ...flowIndexData(flows, pages, stages) })
+      res.render("omni-page", { pages: pagesdata, stages: stageIndexData(stages, pages), ...flowIndexData(flows, pages, stages) })
     }
   } else if (stages) {
     return (req: any, res: any) => {
-      res.render("omni-page", { pages: pageIndexData(pages), stages: stageIndexData(stages, pages) })
+      res.render("omni-page", { pages: pagesdata, stages: stageIndexData(stages, pages) })
     }
   } else if (flows) {
     return (req: any, res: any) => {
-      res.render("omni-page", { pages: pageIndexData(pages), ...flowIndexData(flows, pages) })
+      res.render("omni-page", { pages: pagesdata, ...flowIndexData(flows, pages, stages) })
     }
   } else {
     return (req: any, res: any) => {
-      res.render("omni-page", { pages: pageIndexData(pages) })
+      res.render("omni-page", { pages: pagesdata })
     }
   }
 }
@@ -49,7 +52,7 @@ export const pageIndexData = (pages: PagesArray) => {
 export const pageIndex = (pages: PagesArray, pageType: string) => {
   pageType = pageType || "page-index"
   return (req: any, res: any) => {
-    res.render(pageType, { pages: pages })
+    res.render(pageType, { pages: pageIndexData(pages) })
   }
 }
 
@@ -81,10 +84,10 @@ export const flowIndex = (flows: PageFlowArray, pages: PagesArray, stages?: Stag
 
 /*--- THE MAIN USER ROUTES ---*/
 
-export const govukPagesPlugin = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray, pageType?: string) => {
+export const govukPagesPlugin = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray, pageType?: string, version?: number, phase?: string) => {
   pageType = pageType || "page-index" // Options can be 'all', 'page-index', 'stage-index' - in future could be 'user-flow-index', etc
   const router = Router()
   // This is the default offering from the plugin - it is expected that must users will use this. It should be robust
-  router.get("/", omniPage(pages, stages, flows))
+  router.get("/", omniPage(pages, stages, flows, version, phase))
   return router
 } 

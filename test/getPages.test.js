@@ -1,7 +1,7 @@
 const expect = require('chai').expect
 
 const getPages = require('../src/functions/pages/getPages.ts')
-const {validPages, invalidPages} = require('./data/pages.ts')
+const {validPages, invalidPages, pagesWithNoStagesAndNewPages, pagesWithNoStagesAndAlteredPages} = require('./data/pages.ts')
 const outputs = require('./data/outputs.ts')
 
 describe('Basic getPages functions', () => {
@@ -9,6 +9,18 @@ describe('Basic getPages functions', () => {
       it('should return a simple array of pages when VALID pages JSON is provided', () => {
         const result = getPages.getPages(validPages)
         const output = outputs.getPagesTest.output
+        expect(result).to.eql(output)
+      })
+
+      it('should return a simple array of pages containing flags showing new iterations when VALID pages JSON is provided', () => {
+        const result = getPages.getPages(pagesWithNoStagesAndAlteredPages, 'phase1', 1)
+        const output = outputs.getPagesTestIterations
+        expect(result).to.eql(output)
+      })
+
+      it('should return a simple array of pages containing flags showing new pages when VALID pages JSON is provided', () => {
+        const result = getPages.getPages(pagesWithNoStagesAndNewPages)
+        const output = outputs.getPagesTestNewFlag
         expect(result).to.eql(output)
       })
       

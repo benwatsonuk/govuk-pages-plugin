@@ -27,4 +27,15 @@
     }
   }
   
+  &__item {
+    background-color: aqua;
+
+    &--new {
+      background-color: lightpink;
+    }
+
+    &--updated {
+      background-color: lightgreen;   
+    }
+  }
 }

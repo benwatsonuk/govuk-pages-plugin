@@ -2,8 +2,26 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPage = exports.getPages = void 0;
 const validate_1 = require("../../validate");
-const getPages = (pages) => {
+// export const getPages = (pages: PagesArray) => {
+//   const validatedPages = validatePagesArray(pages)
+//   return validatedPages
+// }
+const getPages = (pages, phase, version) => {
     const validatedPages = (0, validate_1.validatePagesArray)(pages);
+    validatedPages.map(p => {
+        if (p.iterations) {
+            if (phase && version) {
+                const iteration = p.iterations.find(i => i.phase === phase && i.version === version);
+                if (iteration) {
+                    p.hasIteration = true;
+                }
+            }
+            else {
+                p.hasIteration = false;
+            }
+            return p;
+        }
+    });
     return validatedPages;
 };
 exports.getPages = getPages;

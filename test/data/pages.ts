@@ -59,3 +59,50 @@ export const pagesWithNoStages: PagesArray = [
     route: '/a/b/2'
   }
 ];
+
+export const pagesWithNoStagesAndNewPages: PagesArray = [
+  {
+    id: 1,
+    title: 'Title 1',
+    type: 'email',
+    description: 'A description about item 1',
+    route: '/a/a/1',
+    newPage: true
+  },
+  {
+    id: 2,
+    title: 'Title 2',
+    type: 'email',
+    description: 'A description about item 2',
+    route: '/a/b/2'
+  }
+];
+
+export const pagesWithNoStagesAndAlteredPages: PagesArray = [
+  {
+    id: 1,
+    title: 'Title 1',
+    type: 'email',
+    description: 'A description about item 1',
+    route: '/a/a/1',
+    iterations: [
+      {
+        phase: 'phase1',
+        version: 1,
+        notes: 'Notes about this iteration'
+      },
+      {
+        phase: 'phase1',
+        version: 2,
+        notes: 'Notes about this iteration'
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Title 2',
+    type: 'email',
+    description: 'A description about item 2',
+    route: '/a/b/2'
+  }
+];

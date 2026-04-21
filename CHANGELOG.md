@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.0
+
+### Features
+- Ability to show whether a page is new (been added) within a 'version'
+
+
 ## v1.4.3
 
 ### Fixes
