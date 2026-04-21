@@ -28,10 +28,21 @@
   }
   
   &__item {
-    background-color: aqua;
+    display: flex;
+    align-items: center;
 
     &--new {
-      background-color: lightpink;
+      &:after {
+        content: "New";
+        text-transform: uppercase;
+        display: inline-block;
+        background-color: govuk-colour("red", "tint-25");
+        color: white;
+        font-size: 9px;
+        padding: 2px 4px;
+        margin-left: 8px;
+        border-radius: 4px;
+      }
     }
 
     &--updated {
