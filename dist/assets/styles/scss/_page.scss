@@ -35,18 +35,32 @@
       &:after {
         content: "New";
         text-transform: uppercase;
-        display: inline-block;
+        display: inline-flex;
+        align-self: center;
         background-color: govuk-colour("red", "tint-25");
         color: white;
         font-size: 9px;
         padding: 2px 4px;
         margin-left: 8px;
         border-radius: 4px;
+        line-height: normal;
       }
     }
 
     &--updated {
-      background-color: lightgreen;   
+      &:after {
+        content: "Updated";
+        text-transform: uppercase;
+        display: inline-flex;
+        align-self: center;
+        background-color: govuk-colour("green", "tint-25");
+        color: white;
+        font-size: 9px;
+        padding: 2px 4px;
+        margin-left: 8px;
+        border-radius: 4px;
+        line-height: normal;
+      }    
     }
   }
 }
