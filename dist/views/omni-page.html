@@ -14,6 +14,9 @@
             <div class="govuk-pages-plugin__page-options__container">
               <ic-switch id="usePageOverview" label="Page links go to an overview page" checked="true" size="small" helper-text="If checked, all links to pages will go to an overview page rather than directly to referenced page"></ic-switch>
             </div>
+            <div class="govuk-pages-plugin__page-options__container">
+              <ic-switch id="showNewAndUpdated" label="Show new and updated pages only" checked="false" size="small" helper-text="If checked, only new and updated pages will be shown"></ic-switch>
+            </div>
           {% endset %}
 
           {{ govukDetails({

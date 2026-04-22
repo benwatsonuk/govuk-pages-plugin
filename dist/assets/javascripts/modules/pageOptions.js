@@ -40,6 +40,11 @@ const SWITCH_HANDLERS = {
   showFullWidth: {
     targets: ".govuk-pages-plugin__flows__flow",
     className: "govuk-pages-plugin__flows__flow--full-width"
+  },
+
+  showNewAndUpdated: {
+    onToggleOn: updateNewAndUpdatedFilter,
+    onToggleOff: updateNewAndUpdatedFilter
   }
 };
 
@@ -148,6 +153,16 @@ const watchForPageOverviewToggle = () => {
   observer.observe(document.body, {
     childList: true,
     subtree: true
+  });
+};
+
+/* ============================================================
+   New and updated toggle logic
+   ============================================================ */
+function updateNewAndUpdatedFilter (checked, cfg) {
+  document.querySelectorAll("#govuk-pages-plugin__page-list li").forEach(li => {
+    const isNewOrUpdated = li.hasAttribute("data-new-page") || li.hasAttribute("data-has-iteration");
+    li.classList.toggle("govuk-visually-hidden", checked && !isNewOrUpdated);
   });
 };
 
