@@ -9,11 +9,11 @@ const getFlows_1 = require("./functions/flows/getFlows");
 // Omni page (all available views in tabs)
 const omniPage = (pages, stages, flows, phase, version) => {
     const pagesdata = (0, exports.pageIndexData)(pages, phase, version);
-    console.log('P:' + phase + ' V:' + version);
-    // console.log(pagesdata)
     if (stages && flows) {
         return (req, res) => {
-            res.render("omni-page", { pages: pagesdata, stages: (0, exports.stageIndexData)(stages, pages), ...(0, exports.flowIndexData)(flows, pages, stages) });
+            const flowFilterData = (0, getFlows_1.listStagesWithNewAndUpdatedPagesInFlows)((0, getFlows_1.getFlows)(flows, pages).flows);
+            console.log(flowFilterData);
+            res.render("omni-page", { pages: pagesdata, stages: (0, exports.stageIndexData)(stages, pages), ...(0, exports.flowIndexData)(flows, pages, stages), flowFilterData });
         };
     }
     else if (stages) {
@@ -23,7 +23,8 @@ const omniPage = (pages, stages, flows, phase, version) => {
     }
     else if (flows) {
         return (req, res) => {
-            res.render("omni-page", { pages: pagesdata, ...(0, exports.flowIndexData)(flows, pages, stages) });
+            const flowFilterData = (0, getFlows_1.listStagesWithNewAndUpdatedPagesInFlows)((0, getFlows_1.getFlows)(flows, pages).flows);
+            res.render("omni-page", { pages: pagesdata, ...(0, exports.flowIndexData)(flows, pages, stages), flowFilterData });
         };
     }
     else {

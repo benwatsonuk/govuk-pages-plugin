@@ -1,7 +1,7 @@
 import {Router} from "express"
 import { getPages } from "./functions/pages/getPages"
 import { getStagesWithPages } from "./functions/stages/getStages"
-import { getFlows } from "./functions/flows/getFlows"
+import { getFlows, listStagesWithNewAndUpdatedPagesInFlows } from "./functions/flows/getFlows"
 import { PagesArray, StagesArray, PageFlowArray, PageOutput } from "./types"
 
 /*--- UTILITIES (used by supplied routes AND made available to plugin users) ---*/
@@ -9,12 +9,12 @@ import { PagesArray, StagesArray, PageFlowArray, PageOutput } from "./types"
 // Omni page (all available views in tabs)
 export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFlowArray, phase?: string, version?: number) => {
   const pagesdata = pageIndexData(pages, phase, version)
-          console.log('P:' + phase + ' V:' + version)
 
-// console.log(pagesdata)
   if (stages && flows) {
     return (req: any, res: any) => {
-      res.render("omni-page", { pages: pagesdata, stages: stageIndexData(stages, pages), ...flowIndexData(flows, pages, stages) })
+      const flowFilterData = listStagesWithNewAndUpdatedPagesInFlows(getFlows(flows, pages).flows)
+      console.log(flowFilterData)
+      res.render("omni-page", { pages: pagesdata, stages: stageIndexData(stages, pages), ...flowIndexData(flows, pages, stages), flowFilterData })
     }
   } else if (stages) {
     return (req: any, res: any) => {
@@ -22,7 +22,9 @@ export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFl
     }
   } else if (flows) {
     return (req: any, res: any) => {
-      res.render("omni-page", { pages: pagesdata, ...flowIndexData(flows, pages, stages) })
+      const flowFilterData = listStagesWithNewAndUpdatedPagesInFlows(getFlows(flows, pages).flows)
+  
+      res.render("omni-page", { pages: pagesdata, ...flowIndexData(flows, pages, stages), flowFilterData })
     }
   } else {
     return (req: any, res: any) => {

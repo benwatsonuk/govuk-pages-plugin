@@ -1,4 +1,4 @@
-import { PageFlowArray, PagesArray, StagesArray, Stage, StepGroup, StepOutput, FlowOutput, PageFlowOutput } from "../../types"
+import { PageFlowArray, PagesArray, StagesArray, Stage, StepGroup, StepOutput, FlowOutput, PageFlowOutput, PageFlow } from "../../types"
 import { defaultStage, getStageById } from "../stages/getStages"
 import { validatePageFlowArray, validatePagesArray, validateStagesArray } from "../../validate"
 
@@ -78,7 +78,31 @@ const mapPagesWithStagesToFlow = (flows: PageFlowArray, pages: PagesArray, stage
         steps: currentSteps
       })
     }
-    toReturn.push({...flow, steps: mappedFlow, stepsWithStages})
+    let hasNewPage = false
+    let hasIteration = false
+    mappedFlow.forEach(page => {
+      if (page.newPage) {
+        hasNewPage = true
+      }
+      if (page.hasIteration) {
+        hasIteration = true
+      }
+    })
+    toReturn.push({...flow, steps: mappedFlow, stepsWithStages, hasIteration: hasIteration, hasNewPage: hasNewPage})
   }
+  return toReturn
+}
+
+export const listStagesWithNewAndUpdatedPagesInFlows = (flows: PageFlowOutput[]): number[] => {
+  const toReturn: number[] = [] // ids of stage indexes with new or updated pages in the flow
+  flows.map((i: PageFlowOutput, index: number) => {
+    i.steps.map((f: StepOutput) => {
+      if (f.hasIteration || f.newPage) {
+        if (!toReturn.includes(index)) {
+          toReturn.push(index)
+        }
+      }
+    })
+  })
   return toReturn
 }

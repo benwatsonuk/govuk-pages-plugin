@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getFlows = void 0;
+exports.listStagesWithNewAndUpdatedPagesInFlows = exports.getFlows = void 0;
 const getStages_1 = require("../stages/getStages");
 const validate_1 = require("../../validate");
 const getFlows = (flows, pages, stages) => {
@@ -80,7 +80,31 @@ const mapPagesWithStagesToFlow = (flows, pages, stages) => {
                 steps: currentSteps
             });
         }
-        toReturn.push({ ...flow, steps: mappedFlow, stepsWithStages });
+        let hasNewPage = false;
+        let hasIteration = false;
+        mappedFlow.forEach(page => {
+            if (page.newPage) {
+                hasNewPage = true;
+            }
+            if (page.hasIteration) {
+                hasIteration = true;
+            }
+        });
+        toReturn.push({ ...flow, steps: mappedFlow, stepsWithStages, hasIteration: hasIteration, hasNewPage: hasNewPage });
     }
     return toReturn;
 };
+const listStagesWithNewAndUpdatedPagesInFlows = (flows) => {
+    const toReturn = []; // ids of stage indexes with new or updated pages in the flow
+    flows.map((i, index) => {
+        i.steps.map((f) => {
+            if (f.hasIteration || f.newPage) {
+                if (!toReturn.includes(index)) {
+                    toReturn.push(index);
+                }
+            }
+        });
+    });
+    return toReturn;
+};
+exports.listStagesWithNewAndUpdatedPagesInFlows = listStagesWithNewAndUpdatedPagesInFlows;

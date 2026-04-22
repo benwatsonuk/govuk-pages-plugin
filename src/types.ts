@@ -61,8 +61,10 @@ export interface PageFlow {
   id: number
   title: string
   description?: string
-  user?: string,
+  user?: string
   steps: PageFlowStep[]
+  hasNewPage?: boolean
+  hasIteration?: boolean
 }
 
 // End Page Flows

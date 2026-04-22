@@ -164,6 +164,14 @@ function updateNewAndUpdatedFilter (checked, cfg) {
     const isNewOrUpdated = el.hasAttribute("data-new-page") || el.hasAttribute("data-has-iteration");
     el.classList.toggle("govuk-visually-hidden", checked && !isNewOrUpdated);
   });
+  const excludeIndexes = JSON.parse(document.getElementById('page-flows-accordion').attributes['data'].value);
+  const items = document.querySelectorAll('.govuk-pages-plugin__flows .govuk-accordion__section');
+
+  items.forEach((el, index) => {
+  if (!excludeIndexes.includes(index)) {
+    el.classList.toggle('govuk-visually-hidden');
+  }  
+});
 };
 
 /* ============================================================
