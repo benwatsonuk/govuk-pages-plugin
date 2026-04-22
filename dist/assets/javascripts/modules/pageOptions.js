@@ -160,9 +160,9 @@ const watchForPageOverviewToggle = () => {
    New and updated toggle logic
    ============================================================ */
 function updateNewAndUpdatedFilter (checked, cfg) {
-  document.querySelectorAll("#govuk-pages-plugin__page-list li").forEach(li => {
-    const isNewOrUpdated = li.hasAttribute("data-new-page") || li.hasAttribute("data-has-iteration");
-    li.classList.toggle("govuk-visually-hidden", checked && !isNewOrUpdated);
+  document.querySelectorAll("#govuk-pages-plugin__page-list li, #stages .govuk-pages-plugin__stages__stage, #stages .govuk-pages-plugin__stages__stage li").forEach(el => {
+    const isNewOrUpdated = el.hasAttribute("data-new-page") || el.hasAttribute("data-has-iteration");
+    el.classList.toggle("govuk-visually-hidden", checked && !isNewOrUpdated);
   });
 };
 

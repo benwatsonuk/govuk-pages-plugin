@@ -45,6 +45,8 @@ export interface StageWithPages {
   description?: string
   subStages?: SubStageWithPages[]
   pages: Page[]
+  hasNewPage?: boolean
+  hasIteration?: boolean
 }
 
 // End Pages

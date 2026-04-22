@@ -64,12 +64,25 @@ export const mapPagesToStages = (
           }
         }).filter(subStage => subStage !== undefined)
       } 
+
+      let hasNewPage = false
+      let hasIteration = false
+      pagesForStage.forEach(page => {
+        if (page.newPage) {
+          hasNewPage = true
+        }
+        if (page.hasIteration) {
+          hasIteration = true
+        }
+      })
     
       return {
         id: stage.id,
         title: stage.title,
         description: stage.description,
         subStages: subStagesWithPages,
+        hasNewPage: hasNewPage,
+        hasIteration: hasIteration,
         pages: pagesForStage
       }
     }
