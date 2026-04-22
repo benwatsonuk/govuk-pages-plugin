@@ -18,6 +18,9 @@
     heading: {
         text: flow.title
     },
+    attributes: {
+        "data-flow-id": flow.id
+    },
     content: {
         html: "<p class='govuk-body-s'>" ~ (flow.description | default('')) ~ "<br /><span>" ~ flow.steps.length ~ " pages in flow.</span></p>
         <ol class='govuk-pages-plugin__flows__flow govuk-pages-plugin__flows__flow--with-stages'>" ~ (stageLinks | join(' ')) ~ "</p>"

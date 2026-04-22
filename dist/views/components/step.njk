@@ -1,5 +1,5 @@
 {% macro govukPagesPluginStep(step) %}
-    <div class="govuk-pages-plugin__flows__step">
+    <div class="govuk-pages-plugin__flows__step {% if step.newPage %}govuk-pages-plugin__flows__step--new{% endif %}{% if step.hasIteration %}govuk-pages-plugin__flows__step--updated{% endif %}">
     <a href="{{ step.route }}" class="govuk-pages-plugin__flows__step govuk-pages-plugin__pages__link" data-overview-page-link="./page/{{step.id}}" data-direct-link="{{ step.route }}">
         <div class="govuk-pages-plugin__screen-icon {% if step.type %}govuk-pages-plugin__screen-icon--{{ step.type }}{% endif%}"></div>
         {{ step.title }}

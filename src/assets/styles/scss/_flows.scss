@@ -146,6 +146,30 @@
     position: relative;
     transition: all 0.2s;
 
+    &--new, &--updated {
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 5rem;
+      }
+    }
+  
+    .govuk-pages-plugin__flows__flow--list &--new::after,
+    .govuk-pages-plugin__flows__flow--list &--updated::after {    
+      position: static  
+    }
+
+
+    &--new {
+      @extend .govuk-pages-plugin__tag;
+      @extend .govuk-pages-plugin__tag--new;
+    }
+
+    &--updated {
+      @extend .govuk-pages-plugin__tag;
+      @extend .govuk-pages-plugin__tag--updated;
+    }
+
     &:hover, &focus {
       .govuk-pages-plugin__screen-icon {
         opacity: 1;
