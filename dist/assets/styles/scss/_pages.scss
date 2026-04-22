@@ -8,5 +8,20 @@
     vertical-align: top;
     position: relative;
   }
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    &--new {
+      @extend .govuk-pages-plugin__tag;
+      @extend .govuk-pages-plugin__tag--new;
+    }
+
+    &--updated {
+      @extend .govuk-pages-plugin__tag;
+      @extend .govuk-pages-plugin__tag--updated;
+    }
+  }
   
 }
