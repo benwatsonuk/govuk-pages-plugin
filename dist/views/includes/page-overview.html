@@ -1,3 +1,10 @@
+
+{% if page.newPage %}
+    <p class="govuk-pages-plugin__tag govuk-pages-plugin__tag--new govuk-body-small" style="display: inline-flex; align-items: center;"><strong>Note</strong>: This page is new in this version.</p>
+{% endif %}
+{% if page.hasIteration %}
+    <p class="govuk-pages-plugin__tag govuk-pages-plugin__tag--updated govuk-body-small" style="display: inline-flex; align-items: center;"><strong>Note</strong>: This page has been updated in this version.</p>
+{% endif %}
 {% if page.description %}
     <p>{{ page.description }}</p>
 {% endif %}
@@ -7,8 +14,30 @@
         <div class="govuk-pages-plugin__page__preview">
             <iframe class="govuk-pages-plugin__page__preview__screen" src="../{{page.route}}"></iframe>
         </div>
+
+        {% set pageIterations %}{% include("./page-overview/page-iterations.html") %}{% endset %}
+        {% set pageItems = [] %}
+        
+        {% if page.iterations.length %}
+            {% set pageItems = (pageItems.push({
+                    heading: {
+                        text: "Page iterations"
+                    },
+                    content: {
+                        html: pageIterations
+                    }
+                }), pageItems) %}    
+        {% endif %}
+
+
+        {{ govukAccordion({
+            id: "page-overview-accordion",
+            items: pageItems
+        }) }}
     </div>
     <div class="govuk-grid-column-one-third">
+
+
 
         <!-- <a href="../{{ page.route }}">Go to page</a> -->
     </div>

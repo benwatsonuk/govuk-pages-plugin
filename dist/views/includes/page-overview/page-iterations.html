@@ -1,0 +1,22 @@
+<p>This page has <strong>{{ page.iterations.length }}</strong> iteration{% if page.iterations.length != 1 %}s{% endif %}</p>
+
+    {% set iterations = [] %}
+
+    {% for iteration in page.iterations | reverse %}
+        {% set iterationDetail = { title: "Iteration " + (loop.index), time: "Phase: " + iteration.phase + " Version: " + iteration.version, content: iteration.notes } %}
+        {% set iterations = (iterations.push(iterationDetail), iterations) %}
+    {% endfor %}
+
+    {% if page.iterations.length %}
+        {% set versionNumber = (page.iterations[page.iterations.length - 1].version) - 1 %}
+        {% set thePhase = (page.iterations[page.iterations.length - 1].phase) %}
+        {% set iterationDetail = { title: "Baseline", time: "Phase: " + thePhase + " Version: " + versionNumber, content: "Baseline version" } %}
+        {% set iterations = (iterations.push(iterationDetail), iterations) %}
+    {% endif %}
+
+    {%- from "hmrc/components/timeline/macro.njk" import hmrcTimeline -%}
+    {{ hmrcTimeline({
+        headingLevel: 2,
+        events: iterations 
+    }) }}
+</ul>
