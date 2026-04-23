@@ -7,7 +7,7 @@
 
 <ul class="govuk-list govuk-list--number" id="govuk-pages-plugin__page-list">
     {% for page in pages %}
-    <li {% if page.newPage %}data-new-page{% endif %}{% if page.hasIteration %}data-has-iteration{% endif %}>
+    <li {% if page.newPage %}data-has-new-page{% endif %}{% if page.hasIteration %}data-has-iteration{% endif %}>
         {{ pageItem({page: page}) }}
     </li>
     {% endfor %}

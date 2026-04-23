@@ -10,7 +10,7 @@
         {% endif %}
         <ol>
         {% for page in stage.pages %}
-        <li {% if page.newPage %}data-new-page{% endif %}{% if page.hasIteration %}data-has-iteration{% endif %}>
+        <li {% if page.newPage %}data-has-new-page{% endif %}{% if page.hasIteration %}data-has-iteration{% endif %}>
             <div class="govuk-pages-plugin__pages__link {% if page.newPage %}govuk-pages-plugin__pages__link--new{% endif %}{% if page.hasIteration %}govuk-pages-plugin__pages__link--updated{% endif %}">
             <a class="" href="{{ page.route }}" data-overview-page-link="./page/{{page.id}}" data-direct-link="{{ page.route }}">
             {{ page.title }}</a></div>{% if page.description %} <span class="govuk-body-s">{{ page.description }}</span> {% endif %}</li>
