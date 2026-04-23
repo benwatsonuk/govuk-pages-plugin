@@ -1,5 +1,11 @@
 # Changelog
 
+
+## v1.5.2
+
+### Fix
+- Stages were not correctly targetted during filtering
+
 ## v1.5.1
 
 ### Fix
