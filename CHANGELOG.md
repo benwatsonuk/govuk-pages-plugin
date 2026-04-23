@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.3
+
+### Features
+- Iterations are showing on the overview page
 
 ## v1.5.2
 
