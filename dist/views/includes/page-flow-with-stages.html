@@ -14,9 +14,14 @@
     {% set stageLinks = (stageLinks.push(stageLink), stageLinks) %}
     {% endfor %}
 
+    {% set itemTitle = flow.title %}
+    {% set itemClass = "" %}
+    <!-- {% if flow.hasNewPage %}{% set itemClass = itemClass + " govuk-pages-plugin__tag govuk-pages-plugin__tag--new" %}{% endif %} -->
+    {% if flow.hasIteration or flow.hasNewPage %}{% set itemClass = itemClass + " govuk-pages-plugin__tag govuk-pages-plugin__tag--updated" %}{% endif %}
+    
     {% set item = {
     heading: {
-        text: flow.title
+        html: "<span style='display: inline-flex; align-items: center;' class='" ~ itemClass ~ "'>" ~ itemTitle ~ "</span>"
     },
     content: {
         html: "<p class='govuk-body-s'>" ~ (flow.description | default('')) ~ "<br /><span>" ~ flow.steps.length ~ " pages in flow.</span></p>

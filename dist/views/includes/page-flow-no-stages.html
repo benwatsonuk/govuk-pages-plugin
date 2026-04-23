@@ -8,10 +8,15 @@
     {% set stepLink = "<li class='govuk-pages-plugin__flows__item'>" ~ govukPagesPluginStep(step) ~ "</li>" %}
     {% set stepLinks = (stepLinks.push(stepLink), stepLinks) %}
     {% endfor %}
-
+  
+    {% set itemTitle = flow.title %}
+    {% set itemClass = "" %}
+    <!-- {% if flow.hasNewPage %}{% set itemClass = itemClass + " govuk-pages-plugin__tag govuk-pages-plugin__tag--new" %}{% endif %} -->
+    {% if flow.hasIteration or flow.hasNewPage %}{% set itemClass = itemClass + " govuk-pages-plugin__tag govuk-pages-plugin__tag--updated" %}{% endif %}
+    
     {% set item = {
     heading: {
-        text: flow.title
+        html: "<span style='display: inline-flex; align-items: center;' class='" ~ itemClass ~ "'>" ~ itemTitle ~ "</span>"
     },
     content: {
         html: "<p class='govuk-body-s'>" ~ (flow.description | default('')) ~ "<br /><span>" ~ flow.steps.length ~ " pages in flow.</span></p>
@@ -26,7 +31,7 @@
 {{ govukAccordion({
     id: "page-flows-accordion",
     attributes: {
-        data: flowFilterData
+        data: '[' ~ flowFilterData ~ ']'
     },
     items: items
 }) }}
