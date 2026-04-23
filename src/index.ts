@@ -13,7 +13,6 @@ export const omniPage = (pages: PagesArray, stages?: StagesArray, flows?: PageFl
   if (stages && flows) {
     return (req: any, res: any) => {
       const flowFilterData = listStagesWithNewAndUpdatedPagesInFlows(getFlows(flows, pages).flows)
-      console.log(flowFilterData)
       res.render("omni-page", { pages: pagesdata, stages: stageIndexData(stages, pages), ...flowIndexData(flows, pages, stages), flowFilterData })
     }
   } else if (stages) {

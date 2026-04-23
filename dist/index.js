@@ -12,7 +12,6 @@ const omniPage = (pages, stages, flows, phase, version) => {
     if (stages && flows) {
         return (req, res) => {
             const flowFilterData = (0, getFlows_1.listStagesWithNewAndUpdatedPagesInFlows)((0, getFlows_1.getFlows)(flows, pages).flows);
-            console.log(flowFilterData);
             res.render("omni-page", { pages: pagesdata, stages: (0, exports.stageIndexData)(stages, pages), ...(0, exports.flowIndexData)(flows, pages, stages), flowFilterData });
         };
     }

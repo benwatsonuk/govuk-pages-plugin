@@ -161,7 +161,7 @@ const watchForPageOverviewToggle = () => {
    ============================================================ */
 function updateNewAndUpdatedFilter (checked, cfg) {
   document.querySelectorAll("#govuk-pages-plugin__page-list li, #stages .govuk-pages-plugin__stages__stage, #stages .govuk-pages-plugin__stages__stage li").forEach(el => {
-    const isNewOrUpdated = el.hasAttribute("data-new-page") || el.hasAttribute("data-has-iteration");
+    const isNewOrUpdated = el.hasAttribute("data-has-new-page") || el.hasAttribute("data-has-iteration");
     el.classList.toggle("govuk-visually-hidden", checked && !isNewOrUpdated);
   });
   const excludeIndexes = JSON.parse(document.getElementById('page-flows-accordion').attributes['data'].value);

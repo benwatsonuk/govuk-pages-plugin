@@ -1,10 +1,16 @@
 # Changelog
 
+## v1.5.1
+
+### Fix
+- Removed console logs
+- Stages were not correctly targetted during filtering
+
 ## v1.5.0
 
 ### Features
 - Ability to show whether a page is new (been added) within a 'version'
-
+- Ability to show whether a page has been iterated (been updated) within a 'version'
 
 ## v1.4.3
 
